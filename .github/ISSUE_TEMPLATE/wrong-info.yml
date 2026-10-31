@@ -1,0 +1,52 @@
+name: ✏️ Report wrong information
+description: A shop closed, moved, or has wrong details? Let us know.
+title: "[Wrong info] "
+labels: ["report", "content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for keeping the directory accurate!
+        ⚠️ This issue is **public** — please do not include private personal information.
+
+  - type: input
+    id: page
+    attributes:
+      label: Which page or shop?
+      description: Paste the link to the page, or write the shop/product name.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What is wrong?
+      multiple: true
+      options:
+        - Shop is permanently closed
+        - Shop has moved
+        - Wrong phone / Telegram / Facebook
+        - Wrong opening hours
+        - Wrong location on map
+        - Wrong products listed
+        - Wrong translation
+        - Inappropriate photo or text
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Correct information
+      description: What should it say instead? How do you know (visited, called, owner told you…)?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: relation
+    attributes:
+      label: Are you the shop owner or staff?
+      options:
+        - "No"
+        - "Yes"

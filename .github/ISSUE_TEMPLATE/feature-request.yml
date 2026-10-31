@@ -1,0 +1,31 @@
+name: 💡 Feature request
+description: Suggest an idea to make the platform more useful.
+title: "[Idea] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Who has this problem, and when?
+      placeholder: "e.g. As a tailor, I can't tell which shops sell fabric by the meter…"
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Your idea
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you have considered
+
+  - type: markdown
+    attributes:
+      value: |
+        The roadmap is in [docs/DEVELOPMENT_PHASES.md](https://github.com/HorngFu/Fashion-in-Cambodia/blob/main/docs/DEVELOPMENT_PHASES.md).
+        Ideas that need paid services or user accounts may be planned for a later phase.

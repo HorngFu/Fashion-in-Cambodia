@@ -1,0 +1,114 @@
+name: 🏪 Suggest a shop
+description: Tell us about a shop that sells fashion products, materials, tools or services in Cambodia.
+title: "[Shop] "
+labels: ["suggestion", "content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping! An editor will check the details and add the shop.
+        ⚠️ This issue is **public** — please do not include private personal information.
+
+  - type: input
+    id: shop-name
+    attributes:
+      label: Shop name
+      description: In Khmer and/or English.
+      placeholder: "e.g. ហាងសូត្រ Golden Silk"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: shop-type
+    attributes:
+      label: Type of shop
+      options:
+        - Physical shop
+        - Market stall
+        - Workshop / tailor
+        - Online only (Facebook, Telegram, Instagram…)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: province
+    attributes:
+      label: Province
+      options:
+        - Phnom Penh
+        - Banteay Meanchey
+        - Battambang
+        - Kampong Cham
+        - Kampong Chhnang
+        - Kampong Speu
+        - Kampong Thom
+        - Kampot
+        - Kandal
+        - Kep
+        - Koh Kong
+        - Kratie
+        - Mondulkiri
+        - Oddar Meanchey
+        - Pailin
+        - Preah Sihanouk
+        - Preah Vihear
+        - Prey Veng
+        - Pursat
+        - Ratanakiri
+        - Siem Reap
+        - Stung Treng
+        - Svay Rieng
+        - Takeo
+        - Tbong Khmum
+        - Online only / nationwide delivery
+    validations:
+      required: true
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Address or location
+      description: Street, market name and stall number, or a Google Maps link.
+      placeholder: "e.g. Russian Market (Phsar Toul Tom Poung), stall 123 — https://maps.app.goo.gl/..."
+
+  - type: textarea
+    id: products
+    attributes:
+      label: What do they sell?
+      description: Products, materials, tools or services.
+      placeholder: "e.g. Silk fabric, krama, sewing thread, alterations"
+    validations:
+      required: true
+
+  - type: textarea
+    id: contact
+    attributes:
+      label: Shop contact details
+      description: Only the shop's public business contacts.
+      placeholder: |
+        Phone:
+        Telegram:
+        Facebook page:
+        Website:
+
+  - type: input
+    id: hours
+    attributes:
+      label: Opening hours
+      placeholder: "e.g. Mon–Sun 8:00–18:00"
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: Photos you took yourself can be dragged in here.
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation
+      options:
+        - label: The shop is currently open (as far as I know).
+          required: true
+        - label: I agree that this information and any photos I add are published under CC BY-SA 4.0, and the photos are my own or shared with permission.
+          required: true
