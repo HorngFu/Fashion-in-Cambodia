@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 Development plan
+    url: https://github.com/HorngFu/Fashion-in-Cambodia/blob/main/docs/DEVELOPMENT_PHASES.md
+    about: See what is planned before suggesting a feature.
+  - name: 🤝 How to contribute
+    url: https://github.com/HorngFu/Fashion-in-Cambodia/blob/main/CONTRIBUTING.md
+    about: Ways to help, with or without coding.

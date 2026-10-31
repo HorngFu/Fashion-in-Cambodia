@@ -311,13 +311,13 @@ Overview:
 **Goal:** a clean, welcoming open-source repository.
 
 Tasks
-- [ ] 0.1 `README.md` — what the project is, screenshots placeholder, how to run, how to contribute.
-- [ ] 0.2 `LICENSE` (code) and `CONTENT_LICENSE.md` (data) — per D3/D4.
-- [ ] 0.3 `CONTRIBUTING.md` — how to add a shop (non-coders) and how to contribute code.
-- [ ] 0.4 `CODE_OF_CONDUCT.md` (Contributor Covenant).
-- [ ] 0.5 GitHub issue templates: bug, feature, **new shop**, **wrong info**; PR template.
-- [ ] 0.6 `.gitignore`, `.editorconfig`, `CHANGELOG.md`.
-- [ ] 0.7 `CLAUDE.md` with project conventions so future phases stay consistent.
+- [x] 0.1 `README.md` — what the project is, screenshots placeholder, how to run, how to contribute.
+- [x] 0.2 `LICENSE` (code) and `CONTENT_LICENSE.md` (data) — per D3/D4.
+- [x] 0.3 `CONTRIBUTING.md` — how to add a shop (non-coders) and how to contribute code.
+- [x] 0.4 `CODE_OF_CONDUCT.md` (Contributor Covenant).
+- [x] 0.5 GitHub issue templates: bug, feature, **new shop**, **wrong info**; PR template.
+- [x] 0.6 `.gitignore`, `.editorconfig`, `CHANGELOG.md`.
+- [x] 0.7 `CLAUDE.md` with project conventions so future phases stay consistent.
 
 Done when: repo has all files above and renders well on GitHub.
 Cost: $0.
@@ -531,7 +531,7 @@ Do these only when the trigger appears. Each is its own phase.
 
 | Phase | Status | Branch / PR | Notes |
 | --- | --- | --- | --- |
-| 0 Foundations | ⬜ Not started | | |
+| 0 Foundations | 🟨 In review | `phase-0-foundations` | |
 | 1 Scaffold + deploy spike | ⬜ Not started | | |
 | 2 Design system & layout | ⬜ Not started | | |
 | 3 Content model | ⬜ Not started | | |
