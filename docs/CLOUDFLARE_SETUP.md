@@ -77,7 +77,9 @@ GitHub is connected.
 
 Each pull request now gets a comment from Cloudflare with a preview URL.
 
-## 4. Turn on Web Analytics (free, no cookies)
+## 4. (Optional) Turn on Web Analytics (free, no cookies)
+
+_Not enabled yet — skip this until analytics is wanted. Without the token, no analytics script is loaded._
 
 1. Dashboard → **Analytics & Logs → Web Analytics → Add a site**.
 2. Enter the hostname `fashion-in-cambodia.<your-account-subdomain>.workers.dev`
@@ -94,7 +96,7 @@ build variable.
 
 - [ ] The `workers.dev` URL shows "Fashion in Cambodia" and the sample category.
 - [ ] A test pull request gets a Cloudflare preview link.
-- [ ] Web Analytics shows a visit a few minutes after you open the site.
+- [ ] (If enabled) Web Analytics shows a visit a few minutes after you open the site.
 
 ---
 

@@ -350,7 +350,7 @@ Tasks
 - [ ] 1.4 Connect repo to **Cloudflare Workers Builds** (auto deploy on push to `main`, preview URLs for PRs). _Config ready; you do the dashboard steps in [CLOUDFLARE_SETUP.md](CLOUDFLARE_SETUP.md)._
 - [x] 1.5 **Spike:** measure Worker bundle size and CPU time; confirm static pages are served as assets. Record findings in `docs/decisions/0001-hosting.md`.
 - [x] 1.6 GitHub Actions: lint, type-check, build on every PR.
-- [ ] 1.7 Turn on Cloudflare Web Analytics. _Code ready (`NEXT_PUBLIC_CF_BEACON_TOKEN`); you add the token — see [CLOUDFLARE_SETUP.md](CLOUDFLARE_SETUP.md#4-turn-on-web-analytics-free-no-cookies)._
+- [ ] ~~1.7 Turn on Cloudflare Web Analytics.~~ _Deferred — not needed yet. The code is ready: set `NEXT_PUBLIC_CF_BEACON_TOKEN` whenever you want it (see [CLOUDFLARE_SETUP.md](CLOUDFLARE_SETUP.md#4-optional-turn-on-web-analytics-free-no-cookies)). Revisit at launch (Phase 10)._
 
 Done when: a URL like `https://fashion-in-cambodia.<account>.workers.dev` shows
 the page; `/keystatic` loads locally; CI is green; hosting decision recorded.
@@ -521,7 +521,7 @@ Tasks
 
 - [ ] 10.1 Replace sample data with real shops (target: ≥ 50 verified shops in Phnom Penh + Siem Reap + Battambang).
 - [ ] 10.2 Custom domain (D1) connected in Cloudflare; HTTPS; redirects from `workers.dev`.
-- [ ] 10.3 Google Search Console + Bing Webmaster submitted.
+- [ ] 10.3 Google Search Console + Bing Webmaster submitted. Decide on Cloudflare Web Analytics (deferred from 1.7).
 - [ ] 10.4 Launch checklist: legal pages, contact email, social accounts, backup (the Git repo _is_ the backup).
 - [ ] 10.5 Announcement kit: short post in Khmer and English, social images.
 - [ ] 10.6 "good first issue" labels to welcome open-source contributors.
@@ -552,19 +552,19 @@ Do these only when the trigger appears. Each is its own phase.
 
 ## Progress tracker
 
-| Phase                      | Status         | Branch / PR           | Notes                                                                                                       |
-| -------------------------- | -------------- | --------------------- | ----------------------------------------------------------------------------------------------------------- |
-| 0 Foundations              | ✅ Done        | `phase-0-foundations` | [#1](https://github.com/HorngFu/Fashion-in-Cambodia/pull/1)                                                 |
-| 1 Scaffold + deploy spike  | 🟨 In review   | `phase-1-scaffold`    | Live at https://fashion-in-cambodia.horngfu.workers.dev; GitHub connection and analytics pending (1.4, 1.7) |
-| 2 Design system & layout   | ⬜ Not started |                       |                                                                                                             |
-| 3 Content model            | ⬜ Not started |                       |                                                                                                             |
-| 4 Core public pages        | ⬜ Not started |                       |                                                                                                             |
-| 5 Search & filters         | ⬜ Not started |                       |                                                                                                             |
-| 6 Maps                     | ⬜ Not started |                       |                                                                                                             |
-| 7 Production CMS           | ⬜ Not started |                       |                                                                                                             |
-| 8 Community contributions  | ⬜ Not started |                       |                                                                                                             |
-| 9 SEO / performance / a11y | ⬜ Not started |                       |                                                                                                             |
-| 10 Launch                  | ⬜ Not started |                       |                                                                                                             |
+| Phase                      | Status         | Branch / PR           | Notes                                                                                                        |
+| -------------------------- | -------------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 0 Foundations              | ✅ Done        | `phase-0-foundations` | [#1](https://github.com/HorngFu/Fashion-in-Cambodia/pull/1)                                                  |
+| 1 Scaffold + deploy spike  | 🟨 In review   | `phase-1-scaffold`    | Live at https://fashion-in-cambodia.horngfu.workers.dev; GitHub connection pending (1.4); analytics deferred |
+| 2 Design system & layout   | ⬜ Not started |                       |                                                                                                              |
+| 3 Content model            | ⬜ Not started |                       |                                                                                                              |
+| 4 Core public pages        | ⬜ Not started |                       |                                                                                                              |
+| 5 Search & filters         | ⬜ Not started |                       |                                                                                                              |
+| 6 Maps                     | ⬜ Not started |                       |                                                                                                              |
+| 7 Production CMS           | ⬜ Not started |                       |                                                                                                              |
+| 8 Community contributions  | ⬜ Not started |                       |                                                                                                              |
+| 9 SEO / performance / a11y | ⬜ Not started |                       |                                                                                                              |
+| 10 Launch                  | ⬜ Not started |                       |                                                                                                              |
 
 Status legend: ⬜ Not started · 🟨 In progress · ✅ Done
 
