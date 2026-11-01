@@ -9,6 +9,8 @@ lovers, designers, tailors, students, shop owners and tourists. Search for a
 product (silk, krama, buttons, a sewing machine…) and see which shops carry it,
 where they are on the map, and how to contact them.
 
+> 🌐 **Preview:** <https://fashion-in-cambodia.horngfu.workers.dev>
+>
 > 🚧 **Status:** early development. See the
 > [development plan](docs/DEVELOPMENT_PHASES.md) for what is being built.
 
@@ -27,28 +29,40 @@ where they are on the map, and how to contact them.
 
 ## Tech stack
 
-| | |
-| --- | --- |
-| Framework | [Next.js](https://nextjs.org/) (App Router) + TypeScript |
-| Styling | [Tailwind CSS](https://tailwindcss.com/) |
-| CMS | [Keystatic](https://keystatic.com/) — content stored as files in this repo |
-| Hosting | [Cloudflare Workers](https://workers.cloudflare.com/) via [OpenNext](https://opennext.js.org/cloudflare) |
-| Search | [Pagefind](https://pagefind.app/) |
-| Maps | [OpenStreetMap](https://www.openstreetmap.org/) data |
+|           |                                                                                                          |
+| --------- | -------------------------------------------------------------------------------------------------------- |
+| Framework | [Next.js](https://nextjs.org/) (App Router) + TypeScript                                                 |
+| Styling   | [Tailwind CSS](https://tailwindcss.com/)                                                                 |
+| CMS       | [Keystatic](https://keystatic.com/) — content stored as files in this repo                               |
+| Hosting   | [Cloudflare Workers](https://workers.cloudflare.com/) via [OpenNext](https://opennext.js.org/cloudflare) |
+| Search    | [Pagefind](https://pagefind.app/)                                                                        |
+| Maps      | [OpenStreetMap](https://www.openstreetmap.org/) data                                                     |
 
 The whole platform is designed to run on **free tiers** at first. See
 [the cost plan](docs/DEVELOPMENT_PHASES.md#6-cost-plan-free-first-paid-later).
 
 ## Getting started
 
-The application code arrives in Phase 1. Once it does:
+Requirements: **Node.js 20.9+** (24 recommended) and **pnpm**
+(`corepack enable` installs the right version).
 
 ```bash
-# Requirements: Node.js 20+ and pnpm
 pnpm install
 pnpm dev          # http://localhost:3000
                   # Content editor: http://localhost:3000/keystatic
 ```
+
+| Command                                        | What it does                                                      |
+| ---------------------------------------------- | ----------------------------------------------------------------- |
+| `pnpm dev`                                     | Development server                                                |
+| `pnpm lint` / `pnpm typecheck` / `pnpm format` | Code checks and formatting                                        |
+| `pnpm build`                                   | Next.js production build                                          |
+| `pnpm preview`                                 | Build for Cloudflare and run it locally in the Workers runtime \* |
+| `pnpm deploy`                                  | Build and deploy to Cloudflare \*                                 |
+
+\* Needs Linux, macOS, WSL or Windows Developer Mode. Deploys normally happen
+automatically on push to `main` — see
+[docs/CLOUDFLARE_SETUP.md](docs/CLOUDFLARE_SETUP.md).
 
 ## Contributing
 

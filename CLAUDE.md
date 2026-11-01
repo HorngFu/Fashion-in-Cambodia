@@ -23,7 +23,10 @@ and respect the open decisions in its section 7 (ask if one blocks the work).
 
 ## Stack
 
-- Next.js (App Router) + TypeScript (strict) + Tailwind CSS, managed with **pnpm**.
+- Next.js 16 (App Router, Cache Components, Partial Prefetching), TypeScript
+  (strict) and Tailwind CSS 4, managed with **pnpm**. This Next.js is newer than
+  most training data — read the bundled docs in `node_modules/next/dist/docs/`
+  (see `AGENTS.md`).
 - Keystatic CMS — content lives as files in `/content` (GitHub mode in production, local mode in dev).
 - Hosted on Cloudflare Workers via OpenNext (`@opennextjs/cloudflare`).
 - next-intl with `/km` (default) and `/en` routes.
@@ -34,7 +37,16 @@ and respect the open decisions in its section 7 (ask if one blocks the work).
 - **Static-first:** every public page is pre-rendered at build time
   (`generateStaticParams`). Do not add per-request server rendering, middleware
   that runs on every page, or server-side data fetching for public pages
-  without asking.
+  without asking. Rendering Cache Components pages at request time **hangs on
+  Workers** — see [ADR 0001](docs/decisions/0001-hosting.md).
+- The `(site)` root layout exports `ensureStatic = "navigation"`; keep it. Read
+  content only through `src/lib/content.ts`, whose functions use `"use cache"` +
+  `cacheLife("content")`.
+- Build for Cloudflare only with `pnpm cf:build`: it also copies the prerender
+  cache into `.open-next/assets`. Without that step the Worker hangs on pages.
+  Keep the `previews` block in `wrangler.jsonc` (PR builds run `wrangler preview`).
+- OpenNext's build fails on native Windows (symlinks). Verify Cloudflare builds
+  in CI, WSL or a Linux container (`node:24-bookworm`).
 - The Worker only serves `/keystatic`, `/api/keystatic/*` and small form APIs.
 - Do not add a paid service or a dependency that bloats the Worker bundle
   (free limit: 3 MiB compressed) without asking.

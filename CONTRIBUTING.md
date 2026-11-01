@@ -4,13 +4,13 @@ Thank you for helping fashion lovers in Cambodia find what they need! 🙏
 
 There are several ways to help. Pick the one that fits you:
 
-| I want to… | Skills needed | Go to |
-| --- | --- | --- |
-| Add a shop I know | None | [Suggest a shop](#1-suggest-a-shop-no-coding) |
-| Fix wrong information | None | [Report wrong information](#2-report-wrong-information-no-coding) |
-| Translate into Khmer or English | Language | [Translate](#3-translate) |
-| Edit content directly as a volunteer editor | Basic computer skills | [Become an editor](#4-become-a-volunteer-editor) |
-| Write code or design | Developer / designer | [Code contributions](#5-code-contributions) |
+| I want to…                                  | Skills needed         | Go to                                                             |
+| ------------------------------------------- | --------------------- | ----------------------------------------------------------------- |
+| Add a shop I know                           | None                  | [Suggest a shop](#1-suggest-a-shop-no-coding)                     |
+| Fix wrong information                       | None                  | [Report wrong information](#2-report-wrong-information-no-coding) |
+| Translate into Khmer or English             | Language              | [Translate](#3-translate)                                         |
+| Edit content directly as a volunteer editor | Basic computer skills | [Become an editor](#4-become-a-volunteer-editor)                  |
+| Write code or design                        | Developer / designer  | [Code contributions](#5-code-contributions)                       |
 
 Everyone taking part must follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
@@ -73,7 +73,7 @@ Editors add and verify shops using a simple web editor (Keystatic) — no code.
 
 ### Local setup
 
-Requirements: **Node.js 20+**, **pnpm**, **Git**.
+Requirements: **Node.js 20.9+** (24 recommended), **pnpm** (`corepack enable`), **Git**.
 
 ```bash
 git clone https://github.com/HorngFu/Fashion-in-Cambodia.git
@@ -82,14 +82,16 @@ pnpm install
 pnpm dev
 ```
 
-(The app itself is added in Phase 1.)
+Open <http://localhost:3000> for the site and <http://localhost:3000/keystatic>
+for the content editor.
 
 ### Workflow
 
 1. Fork the repository and create a branch from `main`:
    `feat/short-description`, `fix/short-description` or `content/short-description`.
 2. Make your change. Keep pull requests small and focused.
-3. Run the checks (from Phase 1): `pnpm lint`, `pnpm typecheck`, `pnpm build`.
+3. Run the checks: `pnpm format:check`, `pnpm lint`, `pnpm typecheck`, `pnpm build`.
+   CI also builds for Cloudflare and checks the Worker size.
 4. Open a pull request and fill in the template.
 5. A maintainer reviews it. Cloudflare creates a preview link so everyone can see the change.
 

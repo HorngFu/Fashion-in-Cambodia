@@ -7,9 +7,28 @@ Entries are grouped by development phase (see
 
 ## [Unreleased]
 
+### Phase 1 — Scaffold + Cloudflare deploy spike
+
+#### Added
+
+- Next.js 16 app (App Router, TypeScript strict, Tailwind CSS 4, ESLint, Prettier, pnpm).
+- Cloudflare Workers hosting via `@opennextjs/cloudflare` with a free-plan
+  configuration (static-assets incremental cache, no R2/KV, image optimisation off).
+- Keystatic CMS in local mode with a test `categories` collection and one sample entry.
+- Placeholder home page that reads categories from Keystatic at build time.
+- `ensureStatic = "navigation"` on the public site so the build fails if a page
+  would need per-request rendering.
+- Cloudflare Web Analytics, enabled by the `NEXT_PUBLIC_CF_BEACON_TOKEN` build variable.
+- GitHub Actions CI: format, lint, type-check, Cloudflare build and Worker size check.
+- `docs/CLOUDFLARE_SETUP.md` — step-by-step Cloudflare dashboard setup.
+- First deploy to <https://fashion-in-cambodia.horngfu.workers.dev> (from the terminal, built in a Linux container).
+- `docs/decisions/0001-hosting.md` — hosting spike results (Worker 1.3 MiB
+  gzipped, 43% of the free limit).
+
 ### Phase 0 — Project foundations
 
 #### Added
+
 - Development phases plan (`docs/DEVELOPMENT_PHASES.md`).
 - `README.md` in English with a Khmer summary.
 - `LICENSE` (MIT) for code and `CONTENT_LICENSE.md` (CC BY-SA 4.0) for content and data.

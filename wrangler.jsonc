@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "fashion-in-cambodia",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-20",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  // No WORKER_SELF_REFERENCE service binding: OpenNext only needs it for
+  // revalidation queues, and this site never revalidates (content changes by
+  // redeploying). Worker Previews also cannot copy service bindings.
+  "observability": {
+    "enabled": true
+  },
+  // Pull request builds in Workers Builds run `wrangler preview`, which
+  // requires this block. See docs/decisions/0001-hosting.md.
+  "previews": {}
+}
