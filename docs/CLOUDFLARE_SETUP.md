@@ -36,14 +36,21 @@ Everything here is on the **free plan**. No credit card is needed.
    **Only select repositories → `Fashion-in-Cambodia`** and approve.
 4. Select the `Fashion-in-Cambodia` repository and fill in:
 
-   | Setting                              | Value                                                         |
-   | ------------------------------------ | ------------------------------------------------------------- |
-   | Project name                         | `fashion-in-cambodia` (must match `name` in `wrangler.jsonc`) |
-   | Production branch                    | `main`                                                        |
-   | Build command                        | `pnpm cf:build`                                               |
-   | Deploy command                       | `pnpm exec opennextjs-cloudflare deploy`                      |
-   | Non-production branch deploy command | `pnpm exec opennextjs-cloudflare upload`                      |
-   | Root directory                       | `/` (leave empty)                                             |
+   | Setting            | Value                                                         |
+   | ------------------ | ------------------------------------------------------------- |
+   | Project name       | `fashion-in-cambodia` (must match `name` in `wrangler.jsonc`) |
+   | Production branch  | `main`                                                        |
+   | Build command      | `pnpm cf:build`                                               |
+   | Deploy command     | `pnpm exec opennextjs-cloudflare deploy`                      |
+   | Preview command \* | `pnpm exec opennextjs-cloudflare upload`                      |
+   | Root directory     | `/` (leave empty)                                             |
+
+   \* The Preview command lives in **Settings → Builds → Previews Base** (older
+   dashboards call it "Non-production branch deploy command"). Cloudflare fills
+   it with `npx wrangler preview` by default — **replace it**. That command
+   fails ("missing a `previews` field"), and even when configured it skips
+   OpenNext's cache step, so preview pages would hang (see
+   [ADR 0001](decisions/0001-hosting.md)).
 
 5. Leave **Advanced settings → Build variables** empty for now (the analytics
    token is added in step 4). Node.js 24 is picked up from `.node-version` and
@@ -72,8 +79,10 @@ GitHub is connected.
 
 ## 3. Turn on preview links for pull requests
 
-1. Open the Worker → **Settings → Build → Branch control**.
-2. Enable **Builds for non-production branches**.
+1. Open the Worker → **Settings → Builds**.
+2. Make sure builds for non-production branches are enabled, and that the
+   **Previews Base** tab's **Preview command** is
+   `pnpm exec opennextjs-cloudflare upload` (see the note in step 2).
 
 Each pull request now gets a comment from Cloudflare with a preview URL.
 
