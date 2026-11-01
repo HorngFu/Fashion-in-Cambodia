@@ -552,19 +552,19 @@ Do these only when the trigger appears. Each is its own phase.
 
 ## Progress tracker
 
-| Phase                      | Status         | Branch / PR           | Notes                                                       |
-| -------------------------- | -------------- | --------------------- | ----------------------------------------------------------- |
-| 0 Foundations              | ✅ Done        | `phase-0-foundations` | [#1](https://github.com/HorngFu/Fashion-in-Cambodia/pull/1) |
-| 1 Scaffold + deploy spike  | 🟨 In review   | `phase-1-scaffold`    | Waiting on Cloudflare dashboard setup (1.4, 1.7)            |
-| 2 Design system & layout   | ⬜ Not started |                       |                                                             |
-| 3 Content model            | ⬜ Not started |                       |                                                             |
-| 4 Core public pages        | ⬜ Not started |                       |                                                             |
-| 5 Search & filters         | ⬜ Not started |                       |                                                             |
-| 6 Maps                     | ⬜ Not started |                       |                                                             |
-| 7 Production CMS           | ⬜ Not started |                       |                                                             |
-| 8 Community contributions  | ⬜ Not started |                       |                                                             |
-| 9 SEO / performance / a11y | ⬜ Not started |                       |                                                             |
-| 10 Launch                  | ⬜ Not started |                       |                                                             |
+| Phase                      | Status         | Branch / PR           | Notes                                                                                                       |
+| -------------------------- | -------------- | --------------------- | ----------------------------------------------------------------------------------------------------------- |
+| 0 Foundations              | ✅ Done        | `phase-0-foundations` | [#1](https://github.com/HorngFu/Fashion-in-Cambodia/pull/1)                                                 |
+| 1 Scaffold + deploy spike  | 🟨 In review   | `phase-1-scaffold`    | Live at https://fashion-in-cambodia.horngfu.workers.dev; GitHub connection and analytics pending (1.4, 1.7) |
+| 2 Design system & layout   | ⬜ Not started |                       |                                                                                                             |
+| 3 Content model            | ⬜ Not started |                       |                                                                                                             |
+| 4 Core public pages        | ⬜ Not started |                       |                                                                                                             |
+| 5 Search & filters         | ⬜ Not started |                       |                                                                                                             |
+| 6 Maps                     | ⬜ Not started |                       |                                                                                                             |
+| 7 Production CMS           | ⬜ Not started |                       |                                                                                                             |
+| 8 Community contributions  | ⬜ Not started |                       |                                                                                                             |
+| 9 SEO / performance / a11y | ⬜ Not started |                       |                                                                                                             |
+| 10 Launch                  | ⬜ Not started |                       |                                                                                                             |
 
 Status legend: ⬜ Not started · 🟨 In progress · ✅ Done
 

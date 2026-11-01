@@ -7,6 +7,11 @@ This connects the GitHub repository to Cloudflare so that:
 
 Everything here is on the **free plan**. No credit card is needed.
 
+> **Current status (2026-11-01):** the Worker `fashion-in-cambodia` was first
+> deployed from the terminal and is live at
+> <https://fashion-in-cambodia.horngfu.workers.dev>. Steps 1 and the "create"
+> part of step 2 are already done — use **step 2b** to connect GitHub.
+
 ---
 
 ## 1. Create a Cloudflare account
@@ -15,6 +20,15 @@ Everything here is on the **free plan**. No credit card is needed.
 2. Verify your email address.
 
 ## 2. Create the Worker from the GitHub repository
+
+### 2b. If the Worker already exists (deployed from the terminal)
+
+1. Open **Workers & Pages → `fashion-in-cambodia` → Settings → Build**.
+2. Under **Git repository**, click **Connect**, choose **GitHub**, and when
+   GitHub asks, choose **Only select repositories → `Fashion-in-Cambodia`**.
+3. Fill in the build settings from the table in step 4 below and save.
+
+### 2a. Starting from nothing
 
 1. In the dashboard, open **Compute (Workers) → Workers & Pages**.
 2. Click **Create** → **Import a repository** (sometimes shown as **Connect to Git**).
@@ -42,6 +56,19 @@ When it finishes, the site is live at:
 ```text
 https://fashion-in-cambodia.<your-account-subdomain>.workers.dev
 ```
+
+### Deploying from the terminal (Windows)
+
+OpenNext cannot build on native Windows, so a manual deploy is built in a Linux
+container that reuses your local Wrangler login (`pnpm exec wrangler login`
+first, if needed). From the repo folder in Git Bash:
+
+```bash
+MSYS_NO_PATHCONV=1 docker run --rm -v "$(pwd -W):/src:ro" -v "$(cygpath -w "$APPDATA")/xdg.config/.wrangler:/root/.config/.wrangler" node:24-bookworm bash -c "mkdir /app && tar -C /src --exclude=./node_modules --exclude=./.next --exclude=./.open-next --exclude=./.git -cf - . | tar -C /app -xf - && cd /app && corepack enable && CI=true pnpm install --frozen-lockfile && pnpm deploy"
+```
+
+Normally you do not need this: pushes to `main` deploy automatically once
+GitHub is connected.
 
 ## 3. Turn on preview links for pull requests
 

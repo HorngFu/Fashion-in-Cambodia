@@ -9,6 +9,8 @@ lovers, designers, tailors, students, shop owners and tourists. Search for a
 product (silk, krama, buttons, a sewing machine…) and see which shops carry it,
 where they are on the map, and how to contact them.
 
+> 🌐 **Preview:** <https://fashion-in-cambodia.horngfu.workers.dev>
+>
 > 🚧 **Status:** early development. See the
 > [development plan](docs/DEVELOPMENT_PHASES.md) for what is being built.
 
