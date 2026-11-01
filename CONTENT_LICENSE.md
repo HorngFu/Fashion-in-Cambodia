@@ -2,10 +2,10 @@
 
 This repository contains two kinds of material, under two different licenses:
 
-| What | Where | License |
-| --- | --- | --- |
-| **Source code** | everything outside `/content` and `/public/images` | [MIT](LICENSE) |
-| **Content and data** — shop listings, product and category descriptions, guides, photos taken by contributors | `/content`, `/public/images` | [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/) |
+| What                                                                                                          | Where                                              | License                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Source code**                                                                                               | everything outside `/content` and `/public/images` | [MIT](LICENSE)                                                                                                              |
+| **Content and data** — shop listings, product and category descriptions, guides, photos taken by contributors | `/content`, `/public/images`                       | [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/) |
 
 ## What CC BY-SA 4.0 means for you
 
