@@ -9,8 +9,8 @@ Everything here is on the **free plan**. No credit card is needed.
 
 > **Current status (2026-11-01):** the Worker `fashion-in-cambodia` was first
 > deployed from the terminal and is live at
-> <https://fashion-in-cambodia.horngfu.workers.dev>. Steps 1 and the "create"
-> part of step 2 are already done — use **step 2b** to connect GitHub.
+> <https://fashion-in-cambodia.horngfu.workers.dev>. GitHub was connected
+> with **step 2b** the same day, so steps 1–3 are done.
 
 ---
 

@@ -347,7 +347,7 @@ Tasks
 - [x] 1.1 Create Next.js app (TypeScript strict, App Router, Tailwind, ESLint, Prettier, pnpm).
 - [x] 1.2 Add `@opennextjs/cloudflare` + `wrangler` config; `pnpm preview` runs it locally in the Workers runtime.
 - [x] 1.3 Install Keystatic with one test collection (local mode).
-- [ ] 1.4 Connect repo to **Cloudflare Workers Builds** (auto deploy on push to `main`, preview URLs for PRs). _Config ready; you do the dashboard steps in [CLOUDFLARE_SETUP.md](CLOUDFLARE_SETUP.md)._
+- [x] 1.4 Connect repo to **Cloudflare Workers Builds** (auto deploy on push to `main`, preview URLs for PRs). _Connected 2026-11-01._
 - [x] 1.5 **Spike:** measure Worker bundle size and CPU time; confirm static pages are served as assets. Record findings in `docs/decisions/0001-hosting.md`.
 - [x] 1.6 GitHub Actions: lint, type-check, build on every PR.
 - [ ] ~~1.7 Turn on Cloudflare Web Analytics.~~ _Deferred — not needed yet. The code is ready: set `NEXT_PUBLIC_CF_BEACON_TOKEN` whenever you want it (see [CLOUDFLARE_SETUP.md](CLOUDFLARE_SETUP.md#4-optional-turn-on-web-analytics-free-no-cookies)). Revisit at launch (Phase 10)._
@@ -552,19 +552,19 @@ Do these only when the trigger appears. Each is its own phase.
 
 ## Progress tracker
 
-| Phase                      | Status         | Branch / PR           | Notes                                                                                                        |
-| -------------------------- | -------------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
-| 0 Foundations              | ✅ Done        | `phase-0-foundations` | [#1](https://github.com/HorngFu/Fashion-in-Cambodia/pull/1)                                                  |
-| 1 Scaffold + deploy spike  | 🟨 In review   | `phase-1-scaffold`    | Live at https://fashion-in-cambodia.horngfu.workers.dev; GitHub connection pending (1.4); analytics deferred |
-| 2 Design system & layout   | ⬜ Not started |                       |                                                                                                              |
-| 3 Content model            | ⬜ Not started |                       |                                                                                                              |
-| 4 Core public pages        | ⬜ Not started |                       |                                                                                                              |
-| 5 Search & filters         | ⬜ Not started |                       |                                                                                                              |
-| 6 Maps                     | ⬜ Not started |                       |                                                                                                              |
-| 7 Production CMS           | ⬜ Not started |                       |                                                                                                              |
-| 8 Community contributions  | ⬜ Not started |                       |                                                                                                              |
-| 9 SEO / performance / a11y | ⬜ Not started |                       |                                                                                                              |
-| 10 Launch                  | ⬜ Not started |                       |                                                                                                              |
+| Phase                      | Status         | Branch / PR           | Notes                                                                                         |
+| -------------------------- | -------------- | --------------------- | --------------------------------------------------------------------------------------------- |
+| 0 Foundations              | ✅ Done        | `phase-0-foundations` | [#1](https://github.com/HorngFu/Fashion-in-Cambodia/pull/1)                                   |
+| 1 Scaffold + deploy spike  | 🟨 In review   | `phase-1-scaffold`    | Live at https://fashion-in-cambodia.horngfu.workers.dev; GitHub connected; analytics deferred |
+| 2 Design system & layout   | ⬜ Not started |                       |                                                                                               |
+| 3 Content model            | ⬜ Not started |                       |                                                                                               |
+| 4 Core public pages        | ⬜ Not started |                       |                                                                                               |
+| 5 Search & filters         | ⬜ Not started |                       |                                                                                               |
+| 6 Maps                     | ⬜ Not started |                       |                                                                                               |
+| 7 Production CMS           | ⬜ Not started |                       |                                                                                               |
+| 8 Community contributions  | ⬜ Not started |                       |                                                                                               |
+| 9 SEO / performance / a11y | ⬜ Not started |                       |                                                                                               |
+| 10 Launch                  | ⬜ Not started |                       |                                                                                               |
 
 Status legend: ⬜ Not started · 🟨 In progress · ✅ Done
 
