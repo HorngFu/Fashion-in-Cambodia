@@ -58,10 +58,19 @@ page, the Keystatic admin and its API route.
    no payment method is needed either.
 4. **Image optimisation off** (`images.unoptimized`). Cloudflare Images is a
    paid feature; images will be compressed before committing (Phase 3).
-5. **Always run the Worker through OpenNext** (`pnpm preview`, `pnpm deploy`,
-   or `opennextjs-cloudflare deploy|upload` in Workers Builds), never plain
-   `wrangler dev`/`wrangler deploy`, because those skip the cache population.
-6. **CI guards the size:** `scripts/check-worker-size.mjs` fails the build above
+5. **The prerender cache is copied into the assets at build time.**
+   `pnpm cf:build` runs `opennextjs-cloudflare populateCache local` right after
+   the build (for the static-assets cache this is a plain file copy). Any
+   command that uploads `.open-next/assets` therefore ships the prerendered
+   pages — including plain `wrangler dev`/`deploy` and `wrangler preview`.
+6. **Pull request previews use Worker Previews.** Workers Builds runs
+   `npx wrangler preview` for non-production branches and, in practice,
+   ignores a custom "Preview command" (tested 2026-11-01). `wrangler.jsonc`
+   has an empty `previews` block, which that command requires.
+7. **No `WORKER_SELF_REFERENCE` service binding.** OpenNext only uses it for
+   revalidation queues; this site never revalidates, and Worker Previews cannot
+   copy service bindings.
+8. **CI guards the size:** `scripts/check-worker-size.mjs` fails the build above
    2,900 KiB gzipped.
 
 ## Consequences
@@ -81,3 +90,5 @@ page, the Keystatic admin and its API route.
   Components on Workers with newer Next.js/OpenNext versions, or turn off
   `cacheComponents` for those routes, and consider Workers Paid for CPU time.
 - Re-run this spike after major upgrades of `next` or `@opennextjs/cloudflare`.
+- Adding on-demand revalidation (ISR, `revalidateTag`) → restore the
+  `WORKER_SELF_REFERENCE` binding and configure an OpenNext queue.

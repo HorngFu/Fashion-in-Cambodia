@@ -42,15 +42,14 @@ Everything here is on the **free plan**. No credit card is needed.
    | Production branch  | `main`                                                        |
    | Build command      | `pnpm cf:build`                                               |
    | Deploy command     | `pnpm exec opennextjs-cloudflare deploy`                      |
-   | Preview command \* | `pnpm exec opennextjs-cloudflare upload`                      |
+   | Preview command \* | `npx wrangler preview` (Cloudflare's default — leave it)      |
    | Root directory     | `/` (leave empty)                                             |
 
-   \* The Preview command lives in **Settings → Builds → Previews Base** (older
-   dashboards call it "Non-production branch deploy command"). Cloudflare fills
-   it with `npx wrangler preview` by default — **replace it**. That command
-   fails ("missing a `previews` field"), and even when configured it skips
-   OpenNext's cache step, so preview pages would hang (see
-   [ADR 0001](decisions/0001-hosting.md)).
+   \* The Preview command is in **Settings → Builds → Previews Base**. Pull
+   request builds run `npx wrangler preview` even when this field is changed
+   (seen 2026-11-01), so the project is set up for it instead: `wrangler.jsonc`
+   has the required `previews` block, and `pnpm cf:build` already puts the
+   prerendered pages into the assets (see [ADR 0001](decisions/0001-hosting.md)).
 
 5. Leave **Advanced settings → Build variables** empty for now (the analytics
    token is added in step 4). Node.js 24 is picked up from `.node-version` and
@@ -80,9 +79,7 @@ GitHub is connected.
 ## 3. Turn on preview links for pull requests
 
 1. Open the Worker → **Settings → Builds**.
-2. Make sure builds for non-production branches are enabled, and that the
-   **Previews Base** tab's **Preview command** is
-   `pnpm exec opennextjs-cloudflare upload` (see the note in step 2).
+2. Make sure builds for non-production branches are enabled.
 
 Each pull request now gets a comment from Cloudflare with a preview URL.
 

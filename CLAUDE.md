@@ -42,8 +42,9 @@ and respect the open decisions in its section 7 (ask if one blocks the work).
 - The `(site)` root layout exports `ensureStatic = "navigation"`; keep it. Read
   content only through `src/lib/content.ts`, whose functions use `"use cache"` +
   `cacheLife("content")`.
-- Run the Worker only through OpenNext (`pnpm preview` / `pnpm deploy`), never
-  plain `wrangler dev`/`wrangler deploy` — they skip the prerender cache.
+- Build for Cloudflare only with `pnpm cf:build`: it also copies the prerender
+  cache into `.open-next/assets`. Without that step the Worker hangs on pages.
+  Keep the `previews` block in `wrangler.jsonc` (PR builds run `wrangler preview`).
 - OpenNext's build fails on native Windows (symlinks). Verify Cloudflare builds
   in CI, WSL or a Linux container (`node:24-bookworm`).
 - The Worker only serves `/keystatic`, `/api/keystatic/*` and small form APIs.
