@@ -1,25 +1,100 @@
 @import "tailwindcss";
 
-/* Temporary theme. Fonts, colors and dark mode are designed in Phase 2. */
+/*
+ * Design tokens. Placeholder palette inspired by Cambodian silk (decision D10):
+ * crimson silk, Angkor gold and warm off-white. Every text/background pair
+ * used in components meets WCAG AA contrast.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --bg: #fbf8f3;
+  --surface: #ffffff;
+  --surface-muted: #f4eee6;
+  --fg: #1f1a17;
+  --muted: #625750;
+  --border: #e5dccf;
+  --primary: #8e1b2f;
+  --primary-hover: #73131f;
+  --primary-fg: #ffffff;
+  --primary-soft: #f7e6e9;
+  --accent: #b7832a;
+  --accent-fg: #6f4a0d;
+  --accent-soft: #f6ecd8;
+  --focus: #b7832a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #15100e;
+    --surface: #1f1916;
+    --surface-muted: #2a221e;
+    --fg: #f3ede6;
+    --muted: #b8aca3;
+    --border: #3b312c;
+    --primary: #e8899a;
+    --primary-hover: #f2a7b4;
+    --primary-fg: #26090e;
+    --primary-soft: #3a1a20;
+    --accent: #dcae55;
+    --accent-fg: #e9c47e;
+    --accent-soft: #33281a;
+    --focus: #dcae55;
   }
 }
 
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-sans: var(--font-kantumruy), system-ui, sans-serif;
+
+  --radius-card: 1rem;
+  --radius-control: 0.75rem;
+}
+
+html {
+  color-scheme: light dark;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Khmer stacks consonant clusters and vowels above and below the line, so it
+ * needs more vertical room than Latin text to stay readable and not clip.
+ */
+:lang(km) {
+  line-height: 1.85;
+}
+:lang(km) :is(h1, h2, h3) {
+  line-height: 1.6;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
