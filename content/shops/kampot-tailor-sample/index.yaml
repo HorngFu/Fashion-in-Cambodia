@@ -1,0 +1,16 @@
+name_en: Kampot Tailor (sample)
+status: active
+shop_type: workshop
+description_en: "Sample entry for development — not a real shop."
+description_km: "ឧទាហរណ៍សម្រាប់ការអភិវឌ្ឍ — មិនមែនជាហាងពិតទេ។"
+products:
+  - product: custom-tailoring
+  - product: clothing-alterations
+location:
+  province: kampot
+  district: Kampot
+  market_name: Kampot Market
+  coordinates: 10.6106, 104.1810
+opening_hours_en: "Mon–Sat 8:00–18:00"
+verified: false
+is_sample: true

@@ -7,6 +7,30 @@ Entries are grouped by development phase (see
 
 ## [Unreleased]
 
+### Phase 3 — Content model in Keystatic
+
+#### Added
+
+- Keystatic collections for shops, products, categories, provinces and pages,
+  plus a site-settings singleton, with English (required) and Khmer fields.
+- Validation in the editor: required fields, URL-name format, Cambodian phone
+  numbers, and map positions pasted from Google Maps.
+- Seed data: all 25 provinces with map centers, 37 categories in two levels,
+  22 products with search keywords, 10 sample shops (marked as samples) and an
+  About page.
+- Typed content reader (`src/lib/content.ts`) with helpers such as
+  `getShopsForProduct`, `getShopsByProvince`, `getProductsInCategory` and
+  `localized()`.
+- `pnpm check:content`: checks every entry against the schema, references
+  between entries, map positions inside Cambodia and verified dates (in CI).
+- `pnpm images` / `pnpm images:check`: convert photos to WebP at most
+  1600 px wide and 500 KB, updating paths in `/content` (check runs in CI).
+- `docs/EDITOR_GUIDE.md` with screenshots: how to add and update a shop.
+
+#### Changed
+
+- Home page shows the six top-level categories with descriptions.
+
 ### Phase 2 — Design system & layout
 
 #### Added

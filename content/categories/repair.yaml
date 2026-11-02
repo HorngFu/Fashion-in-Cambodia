@@ -1,0 +1,5 @@
+name_en: Repair
+name_km: ការជួសជុល
+parent: services
+icon: service
+order: 6

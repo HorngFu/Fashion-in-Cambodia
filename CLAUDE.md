@@ -70,6 +70,14 @@ and respect the open decisions in its section 7 (ask if one blocks the work).
   Breadcrumbs, EmptyState, SmartImage); colors and radii are tokens in
   `src/app/globals.css` (`bg-primary`, `text-muted`, …), never raw hex values.
 - Content fields come in pairs: `name_km` / `name_en`, `description_km` / `description_en`.
+  Show them with `localized(locale, en, km)` from `src/lib/content.ts`.
+- The content model is `keystatic.config.ts`; editors follow
+  [docs/EDITOR_GUIDE.md](docs/EDITOR_GUIDE.md). Shop map positions are one
+  `coordinates` text field ("lat, lng"); use `shop.position` from the reader.
+- After changing content or the schema, run `pnpm check:content` (schema,
+  references, map positions) and `pnpm images:check`; both run in CI.
+- Shops with `is_sample: true` are example data — show a "sample" badge and
+  never present them as real shops.
 - The shop → product relationship is stored **only on the shop** (`products[]`).
 - Mobile first: design for a 360px-wide screen and slow connections.
 - Accessibility: semantic HTML, alt text required, keyboard navigable, WCAG AA contrast.

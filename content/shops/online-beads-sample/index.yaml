@@ -1,0 +1,11 @@
+name_en: Online Beads & Buttons (sample)
+status: active
+shop_type: "online_only"
+description_en: "Sample entry for development — not a real shop."
+description_km: "ឧទាហរណ៍សម្រាប់ការអភិវឌ្ឍ — មិនមែនជាហាងពិតទេ។"
+products:
+  - product: buttons
+  - product: sewing-thread
+  - product: zippers
+verified: false
+is_sample: true

@@ -196,30 +196,33 @@ Starter tree (editable):
 
 ### Product (a _type_ of product, not a single stock item)
 
-`name_km`, `name_en`, `slug`, `category`, `description`, `images[]`,
-`tags[]`, `is_cambodian_made` (bool), `typical_price_range` (optional, in USD/KHR).
+`name_km`, `name_en`, `slug`, `category`, `description_en/km`, `photos[]`,
+`keywords[]` (other names and spellings, for search), `is_cambodian_made` (bool),
+`typical_price` (optional text, e.g. “$5–15 per meter”).
 
 ### Shop
 
 `name_km`, `name_en`, `slug`, `description`, `logo`, `photos[]`,
-`province`, `district`, `address`, `latitude`, `longitude`, `google_maps_url`,
+`province`, `district`, `address_en/km`, `coordinates` (“lat, lng” pasted from Google Maps), `google_maps_url`,
 `phone[]`, `telegram`, `facebook`, `instagram`, `tiktok`, `website`,
 `opening_hours`, `shop_type` (physical / online-only / market stall / workshop),
 `market_name` (e.g. Russian Market, Orussey, Central Market),
 **`products[]`** (relationship → Product, with optional `price_note`),
-`categories[]`, `verified` (bool), `last_verified_date`, `status` (active / closed).
+`verified` (bool), `last_verified`, `status` (active / temporarily closed / closed),
+`is_sample` (example data, never shown as a real shop). Categories come from the products.
 
 > The shop → product link is stored **only on the shop** to avoid keeping two
 > lists in sync. Product pages find their shops at build time.
 
 ### Province
 
-`name_km`, `name_en`, `slug`, `center_lat`, `center_lng`, `zoom`. Seeded with all
-25 provinces of Cambodia.
+`name_km`, `name_en`, `slug`, `capital_en/km`, `center_lat`, `center_lng`, `zoom`.
+Seeded with all 25 provinces of Cambodia.
 
 ### Page (MDX)
 
-About us, Contribute, Privacy, Terms, FAQ.
+About us, Contribute, Privacy, Terms, FAQ. `title_en/km`, `summary_en/km`,
+`body_en` and `body_km` (MDX, stored as separate files).
 
 ### Site settings (singleton)
 
@@ -391,16 +394,21 @@ Cost: $0.
 
 Tasks
 
-- [ ] 3.1 Keystatic collections: Category, Product, Shop, Province; singletons: Site settings; collection: Pages (MDX). Fields per [section 5](#5-content-model).
-- [ ] 3.2 Validation: required fields, slug format, lat/lng range inside Cambodia, phone format.
-- [ ] 3.3 Seed data: 25 provinces, starter category tree, ~20 products, ~10 sample shops (clearly marked as samples).
-- [ ] 3.4 Typed content reader (`src/lib/content.ts`) using Keystatic Reader API; helpers like `getShopsForProduct`, `getShopsByProvince`.
-- [ ] 3.5 Image guidelines + script to compress images (`sharp`) before commit (max width 1600px, WebP).
-- [ ] 3.6 Editor guide `docs/EDITOR_GUIDE.md` with screenshots: how to add a shop.
+- [x] 3.1 Keystatic collections: Category, Product, Shop, Province; singletons: Site settings; collection: Pages (MDX). Fields per [section 5](#5-content-model).
+- [x] 3.2 Validation: required fields, slug format, lat/lng range inside Cambodia, phone format.
+- [x] 3.3 Seed data: 25 provinces, starter category tree, ~20 products, ~10 sample shops (clearly marked as samples).
+- [x] 3.4 Typed content reader (`src/lib/content.ts`) using Keystatic Reader API; helpers like `getShopsForProduct`, `getShopsByProvince`.
+- [x] 3.5 Image guidelines + script to compress images (`sharp`) before commit (max width 1600px, WebP).
+- [x] 3.6 Editor guide `docs/EDITOR_GUIDE.md` with screenshots: how to add a shop.
 
 Done when: you can add a shop with products in the admin UI and see the file
 appear in `/content`; build reads it without errors.
 Cost: $0.
+
+> Result: a shop added through the editor was saved to `content/shops/` and
+> read by `pnpm check:content` and `next build`. Seed data: 25 provinces, 37
+> categories, 22 products, 10 sample shops, an About page. Content and image
+> checks run in CI. Khmer names in the seed data need a native speaker's review.
 
 ---
 
@@ -560,8 +568,8 @@ Do these only when the trigger appears. Each is its own phase.
 | -------------------------- | -------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------- |
 | 0 Foundations              | ✅ Done        | `phase-0-foundations`   | [#1](https://github.com/HorngFu/Fashion-in-Cambodia/pull/1)                                                     |
 | 1 Scaffold + deploy spike  | ✅ Done        | `phase-1-scaffold`      | [#2](https://github.com/HorngFu/Fashion-in-Cambodia/pull/2); live, auto-deploys from `main`; analytics deferred |
-| 2 Design system & layout   | 🟨 In review   | `phase-2-design-system` | Khmer copy needs native review                                                                                  |
-| 3 Content model            | ⬜ Not started |                         |                                                                                                                 |
+| 2 Design system & layout   | ✅ Done        | `phase-2-design-system` | [#3](https://github.com/HorngFu/Fashion-in-Cambodia/pull/3); Khmer copy needs native review                     |
+| 3 Content model            | 🟨 In review   | `phase-3-content-model` | Khmer names in seed data need native review                                                                     |
 | 4 Core public pages        | ⬜ Not started |                         |                                                                                                                 |
 | 5 Search & filters         | ⬜ Not started |                         |                                                                                                                 |
 | 6 Maps                     | ⬜ Not started |                         |                                                                                                                 |

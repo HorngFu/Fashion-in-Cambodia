@@ -38,6 +38,12 @@ jobs:
       - name: Translations
         run: pnpm check:messages
 
+      - name: Content
+        run: pnpm check:content
+
+      - name: Images
+        run: pnpm images:check
+
       - name: Type-check
         run: pnpm typecheck
 

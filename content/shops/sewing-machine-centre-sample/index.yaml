@@ -1,0 +1,17 @@
+name_en: Sewing Machine Centre (sample)
+status: active
+shop_type: physical
+description_en: "Sample entry for development — not a real shop."
+description_km: "ឧទាហរណ៍សម្រាប់ការអភិវឌ្ឍ — មិនមែនជាហាងពិតទេ។"
+products:
+  - product: home-sewing-machine
+  - product: industrial-sewing-machine
+  - product: fabric-scissors
+  - product: dress-form
+location:
+  province: phnom-penh
+  district: 7 Makara
+  coordinates: 11.5651, 104.9182
+opening_hours_en: "Mon–Sat 8:00–17:30"
+verified: false
+is_sample: true

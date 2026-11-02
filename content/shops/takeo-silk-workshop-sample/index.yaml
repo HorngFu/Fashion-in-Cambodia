@@ -1,0 +1,16 @@
+name_en: Takeo Silk Workshop (sample)
+status: active
+shop_type: workshop
+description_en: "Sample entry for development — not a real shop."
+description_km: "ឧទាហរណ៍សម្រាប់ការអភិវឌ្ឍ — មិនមែនជាហាងពិតទេ។"
+products:
+  - product: silk-fabric
+  - product: natural-dyes
+  - product: sampot
+location:
+  province: takeo
+  district: Bati
+  coordinates: 10.9500, 104.8000
+opening_hours_en: "Mon–Sat 7:00–16:00"
+verified: false
+is_sample: true

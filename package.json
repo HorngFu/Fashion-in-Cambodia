@@ -14,7 +14,10 @@
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
-    "check:messages": "node scripts/check-messages.mjs"
+    "check:messages": "node scripts/check-messages.mjs",
+    "check:content": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-content.mts",
+    "images": "node scripts/optimize-images.mjs",
+    "images:check": "node scripts/optimize-images.mjs --check"
   },
   "dependencies": {
     "@keystatic/core": "0.6.9",
@@ -35,12 +38,13 @@
     "eslint-config-next": "16.4.3",
     "prettier": "3.9.10",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "sharp": "0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "4.156.0"
   },
   "packageManager": "pnpm@12.16.1",
   "engines": {
-    "node": ">=20.9"
+    "node": ">=22.18"
   }
 }
