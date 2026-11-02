@@ -63,10 +63,18 @@ page, the Keystatic admin and its API route.
    the build (for the static-assets cache this is a plain file copy). Any
    command that uploads `.open-next/assets` therefore ships the prerendered
    pages — including plain `wrangler dev`/`deploy` and `wrangler preview`.
-6. **Pull request previews use Worker Previews.** Workers Builds runs
-   `npx wrangler preview` for non-production branches and, in practice,
-   ignores a custom "Preview command" (tested 2026-11-01). `wrangler.jsonc`
-   has an empty `previews` block, which that command requires.
+6. **Pull request previews use Worker Previews with the default command.**
+   Workers Builds runs the **Previews Base → Preview command** for
+   non-production branches; keep Cloudflare's default `npx wrangler preview`.
+   `wrangler.jsonc` has the empty `previews` block that command requires.
+   `opennextjs-cloudflare upload` does **not** work there: it fails with "The
+   name in your wrangler.jsonc file … must match the name of your Worker"
+   (seen 2026-11-02). **Previews Base is only a template:** each branch gets
+   its own preview with a copy of those settings when its first build runs, so
+   changing Previews Base does not affect existing branches — edit the
+   branch's own preview (Worker → branch switcher → Settings) instead. **Retry
+   build** also reuses the original build's settings; push a new commit to
+   test a change.
 7. **No `WORKER_SELF_REFERENCE` service binding.** OpenNext only uses it for
    revalidation queues; this site never revalidates, and Worker Previews cannot
    copy service bindings.

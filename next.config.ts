@@ -1,5 +1,6 @@
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const ONE_YEAR = 60 * 60 * 24 * 365;
 
@@ -14,6 +15,16 @@ const nextConfig: NextConfig = {
       revalidate: ONE_YEAR,
       expire: ONE_YEAR,
     },
+  },
+  experimental: {
+    // The root layout lives under [locale], so unmatched URLs need a 404 page
+    // that does not depend on it (src/app/global-not-found.tsx).
+    globalNotFound: true,
+  },
+  // No middleware: a plain redirect sends "/" to the default language, so no
+  // code runs per request and every page stays static.
+  async redirects() {
+    return [{ source: "/", destination: "/km", permanent: false }];
   },
   images: {
     // Cloudflare's image resizing is a paid feature. Images are compressed
@@ -30,7 +41,9 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+
+export default withNextIntl(nextConfig);
 
 // Makes Cloudflare bindings available to `next dev`.
 initOpenNextCloudflareForDev();

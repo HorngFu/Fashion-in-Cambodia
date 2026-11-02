@@ -368,16 +368,20 @@ users browse on phones).
 
 Tasks
 
-- [ ] 2.1 `next-intl` setup: `/km/...` and `/en/...` routes, language switcher, `messages/km.json` and `messages/en.json`.
-- [ ] 2.2 Khmer + Latin fonts via `next/font`, correct line-height for Khmer script.
-- [ ] 2.3 Theme tokens (colors, spacing, radius), light mode first, dark mode optional.
-- [ ] 2.4 Layout: header (logo, search box, language), mobile menu, footer (about, contribute, socials, license).
-- [ ] 2.5 Base components: Button, Card, Badge, Breadcrumbs, Tag, EmptyState, Image with placeholder.
-- [ ] 2.6 Placeholder Home page using the components.
+- [x] 2.1 `next-intl` setup: `/km/...` and `/en/...` routes, language switcher, `messages/km.json` and `messages/en.json`.
+- [x] 2.2 Khmer + Latin fonts via `next/font`, correct line-height for Khmer script.
+- [x] 2.3 Theme tokens (colors, spacing, radius), light mode first, dark mode optional.
+- [x] 2.4 Layout: header (logo, search box, language), mobile menu, footer (about, contribute, socials, license). _Social links are added once the project has social media accounts._
+- [x] 2.5 Base components: Button, Card, Badge, Breadcrumbs, Tag, EmptyState, Image with placeholder.
+- [x] 2.6 Placeholder Home page using the components.
 
 Done when: home page looks good on a 360px-wide phone and desktop, in Khmer and
 English; Lighthouse accessibility ≥ 95.
 Cost: $0.
+
+> Result: Lighthouse accessibility 100, best practices 100, SEO 100 (mobile,
+> local build). Performance 82–87 under simulated slow 4G — tuned in Phase 9.
+> Khmer copy in `messages/km.json` still needs a native speaker's review.
 
 ---
 
@@ -552,19 +556,19 @@ Do these only when the trigger appears. Each is its own phase.
 
 ## Progress tracker
 
-| Phase                      | Status         | Branch / PR           | Notes                                                                                         |
-| -------------------------- | -------------- | --------------------- | --------------------------------------------------------------------------------------------- |
-| 0 Foundations              | ✅ Done        | `phase-0-foundations` | [#1](https://github.com/HorngFu/Fashion-in-Cambodia/pull/1)                                   |
-| 1 Scaffold + deploy spike  | 🟨 In review   | `phase-1-scaffold`    | Live at https://fashion-in-cambodia.horngfu.workers.dev; GitHub connected; analytics deferred |
-| 2 Design system & layout   | ⬜ Not started |                       |                                                                                               |
-| 3 Content model            | ⬜ Not started |                       |                                                                                               |
-| 4 Core public pages        | ⬜ Not started |                       |                                                                                               |
-| 5 Search & filters         | ⬜ Not started |                       |                                                                                               |
-| 6 Maps                     | ⬜ Not started |                       |                                                                                               |
-| 7 Production CMS           | ⬜ Not started |                       |                                                                                               |
-| 8 Community contributions  | ⬜ Not started |                       |                                                                                               |
-| 9 SEO / performance / a11y | ⬜ Not started |                       |                                                                                               |
-| 10 Launch                  | ⬜ Not started |                       |                                                                                               |
+| Phase                      | Status         | Branch / PR             | Notes                                                                                                           |
+| -------------------------- | -------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------- |
+| 0 Foundations              | ✅ Done        | `phase-0-foundations`   | [#1](https://github.com/HorngFu/Fashion-in-Cambodia/pull/1)                                                     |
+| 1 Scaffold + deploy spike  | ✅ Done        | `phase-1-scaffold`      | [#2](https://github.com/HorngFu/Fashion-in-Cambodia/pull/2); live, auto-deploys from `main`; analytics deferred |
+| 2 Design system & layout   | 🟨 In review   | `phase-2-design-system` | Khmer copy needs native review                                                                                  |
+| 3 Content model            | ⬜ Not started |                         |                                                                                                                 |
+| 4 Core public pages        | ⬜ Not started |                         |                                                                                                                 |
+| 5 Search & filters         | ⬜ Not started |                         |                                                                                                                 |
+| 6 Maps                     | ⬜ Not started |                         |                                                                                                                 |
+| 7 Production CMS           | ⬜ Not started |                         |                                                                                                                 |
+| 8 Community contributions  | ⬜ Not started |                         |                                                                                                                 |
+| 9 SEO / performance / a11y | ⬜ Not started |                         |                                                                                                                 |
+| 10 Launch                  | ⬜ Not started |                         |                                                                                                                 |
 
 Status legend: ⬜ Not started · 🟨 In progress · ✅ Done
 
