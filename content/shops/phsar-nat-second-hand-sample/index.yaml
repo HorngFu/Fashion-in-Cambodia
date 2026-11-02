@@ -1,0 +1,16 @@
+name_en: Phsar Nat Second-hand (sample)
+status: active
+shop_type: "market_stall"
+description_en: "Sample entry for development — not a real shop."
+description_km: "ឧទាហរណ៍សម្រាប់ការអភិវឌ្ឍ — មិនមែនជាហាងពិតទេ។"
+products:
+  - product: second-hand-clothing
+  - product: leather-bag
+location:
+  province: battambang
+  district: Battambang
+  market_name: Phsar Nat
+  coordinates: 13.1000, 103.1985
+opening_hours_en: "Every day 6:00–17:00"
+verified: false
+is_sample: true

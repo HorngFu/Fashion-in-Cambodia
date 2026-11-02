@@ -9,7 +9,7 @@ import { alternatesFor } from "@/i18n/metadata";
 import { Link } from "@/i18n/navigation";
 import { toLocale } from "@/i18n/routing";
 import { cn } from "@/lib/cn";
-import { getCategories } from "@/lib/content";
+import { getTopCategories, localized } from "@/lib/content";
 import { links } from "@/lib/site";
 
 // Featured provinces until province pages arrive in Phase 4.
@@ -35,7 +35,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const [t, tProvinces, categories] = await Promise.all([
     getTranslations("Home"),
     getTranslations("Provinces"),
-    getCategories(),
+    getTopCategories(),
   ]);
 
   const steps = [
@@ -64,19 +64,27 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           </h2>
           {categories.length > 0 ? (
             <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {categories.map((category) => {
-                const name =
-                  locale === "km" && category.name_km
-                    ? category.name_km
-                    : category.name_en;
-                return (
-                  <li key={category.slug}>
-                    <Link href="/categories" className={cardLinkClasses()}>
-                      <h3 className="text-lg font-semibold">{name}</h3>
-                    </Link>
-                  </li>
-                );
-              })}
+              {categories.map((category) => (
+                <li key={category.slug}>
+                  <Link
+                    href="/categories"
+                    className={cardLinkClasses("h-full")}
+                  >
+                    <h3 className="text-lg font-semibold">
+                      {localized(locale, category.name_en, category.name_km)}
+                    </h3>
+                    {category.description_en && (
+                      <p className="text-muted mt-1 text-sm">
+                        {localized(
+                          locale,
+                          category.description_en,
+                          category.description_km,
+                        )}
+                      </p>
+                    )}
+                  </Link>
+                </li>
+              ))}
             </ul>
           ) : (
             <div className="mt-5">

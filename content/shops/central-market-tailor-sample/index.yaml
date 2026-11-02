@@ -1,0 +1,18 @@
+name_en: Central Market Tailor (sample)
+status: active
+shop_type: workshop
+description_en: "Sample entry for development — not a real shop."
+description_km: "ឧទាហរណ៍សម្រាប់ការអភិវឌ្ឍ — មិនមែនជាហាងពិតទេ។"
+products:
+  - product: custom-tailoring
+  - product: clothing-alterations
+    price_note: from $1
+  - product: school-uniform
+location:
+  province: phnom-penh
+  district: Daun Penh
+  market_name: Central Market (Phsar Thmei)
+  coordinates: 11.5696, 104.9210
+opening_hours_en: "Every day 7:00–18:00"
+verified: false
+is_sample: true

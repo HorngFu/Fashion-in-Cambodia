@@ -1,0 +1,20 @@
+name_en: Orussey Fabrics (sample)
+status: active
+shop_type: "market_stall"
+description_en: "Sample entry for development — not a real shop."
+description_km: "ឧទាហរណ៍សម្រាប់ការអភិវឌ្ឍ — មិនមែនជាហាងពិតទេ។"
+products:
+  - product: cotton-fabric
+  - product: denim-fabric
+  - product: lace-fabric
+  - product: sewing-thread
+  - product: buttons
+  - product: zippers
+location:
+  province: phnom-penh
+  district: 7 Makara
+  market_name: Orussey Market
+  coordinates: 11.5634, 104.9168
+opening_hours_en: "Every day 6:00–17:00"
+verified: false
+is_sample: true

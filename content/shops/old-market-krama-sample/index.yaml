@@ -1,0 +1,17 @@
+name_en: Old Market Krama (sample)
+status: active
+shop_type: "market_stall"
+description_en: "Sample entry for development — not a real shop."
+description_km: "ឧទាហរណ៍សម្រាប់ការអភិវឌ្ឍ — មិនមែនជាហាងពិតទេ។"
+products:
+  - product: krama
+  - product: silk-scarf
+  - product: sampot
+location:
+  province: siem-reap
+  district: Siem Reap
+  market_name: Old Market (Phsar Chas)
+  coordinates: 13.3537, 103.8556
+opening_hours_en: "Every day 7:00–21:00"
+verified: false
+is_sample: true

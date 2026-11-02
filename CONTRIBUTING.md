@@ -53,7 +53,7 @@ Editors add and verify shops using a simple web editor (Keystatic) — no code.
 2. Open an issue titled "I want to be an editor" and tell us a little about
    yourself and which area of Cambodia you know.
 3. A maintainer adds you to the project and sends you the editor guide
-   (`docs/EDITOR_GUIDE.md`, coming in Phase 3).
+   ([docs/EDITOR_GUIDE.md](docs/EDITOR_GUIDE.md)).
 
 ### Content rules
 
