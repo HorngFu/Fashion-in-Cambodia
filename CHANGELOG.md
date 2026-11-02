@@ -7,6 +7,22 @@ Entries are grouped by development phase (see
 
 ## [Unreleased]
 
+### Phase 2 — Design system & layout
+
+#### Added
+
+- Khmer and English versions of every page under `/km` and `/en` (next-intl,
+  no middleware); `/` redirects to `/km`. See ADR 0002.
+- Translations in `messages/km.json` and `messages/en.json`, with a CI check
+  that both have the same keys (`pnpm check:messages`).
+- Kantumruy Pro font for Khmer and Latin, with extra line height for Khmer.
+- Silk-inspired color tokens with light and dark mode; all text meets WCAG AA.
+- Header (logo, navigation, search box, language switcher), mobile menu and footer.
+- UI components: Button, Card, Badge, Tag, Breadcrumbs, EmptyState, SmartImage.
+- Placeholder home page and "coming soon" pages for sections not built yet.
+- Translated 404 page inside the site layout, plus a bilingual global 404.
+- Canonical and language-alternate links on every page (`NEXT_PUBLIC_SITE_URL`).
+
 ### Phase 1 — Scaffold + Cloudflare deploy spike
 
 #### Added

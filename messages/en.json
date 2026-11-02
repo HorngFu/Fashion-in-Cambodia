@@ -1,0 +1,84 @@
+{
+  "Metadata": {
+    "siteName": "Fashion in Cambodia",
+    "description": "Find fashion products, materials and tools in Cambodia — and the shops that sell them."
+  },
+  "Common": {
+    "skipToContent": "Skip to main content",
+    "comingSoon": "Coming soon",
+    "backHome": "Back to home"
+  },
+  "Header": {
+    "homeLabel": "Fashion in Cambodia — home",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "mainNav": "Main"
+  },
+  "Nav": {
+    "home": "Home",
+    "categories": "Categories",
+    "shops": "Shops",
+    "provinces": "Provinces",
+    "map": "Map",
+    "search": "Search",
+    "about": "About",
+    "contribute": "Contribute"
+  },
+  "Search": {
+    "label": "Search products or shops",
+    "placeholder": "Silk, buttons, sewing machine…",
+    "submit": "Search"
+  },
+  "LanguageSwitcher": {
+    "label": "Language",
+    "km": "ខ្មែរ",
+    "en": "English"
+  },
+  "Breadcrumbs": {
+    "label": "Breadcrumb"
+  },
+  "Footer": {
+    "tagline": "A free, open-source, non-profit directory for fashion lovers in Cambodia.",
+    "explore": "Explore",
+    "helpOut": "Help out",
+    "suggestShop": "Suggest a shop",
+    "reportInfo": "Report wrong information",
+    "sourceCode": "Source code on GitHub",
+    "license": "Code: MIT · Content: CC BY-SA 4.0"
+  },
+  "Home": {
+    "eyebrow": "Open directory · Free for everyone",
+    "title": "Find fashion products and the shops that sell them",
+    "intro": "Fabrics, clothing, accessories, tools, supplies and services — from markets in Phnom Penh to workshops across all 25 provinces.",
+    "categoriesTitle": "Browse by category",
+    "categoriesEmpty": "Categories are being added.",
+    "howTitle": "How it works",
+    "step1Title": "Search",
+    "step1Text": "Look for a product, a material or a service.",
+    "step2Title": "Compare shops",
+    "step2Text": "See which shops carry it and where they are.",
+    "step3Title": "Visit or contact",
+    "step3Text": "Get directions, call or message the shop.",
+    "provincesTitle": "Browse by province",
+    "provincesAll": "All provinces",
+    "contributeTitle": "Know a good shop?",
+    "contributeText": "This directory is built by the community. Add a shop you know — no account or coding needed.",
+    "contributeCta": "Suggest a shop"
+  },
+  "Provinces": {
+    "phnom-penh": "Phnom Penh",
+    "siem-reap": "Siem Reap",
+    "battambang": "Battambang",
+    "kampong-cham": "Kampong Cham",
+    "takeo": "Takeo",
+    "kampot": "Kampot"
+  },
+  "ComingSoon": {
+    "title": "{section} — coming soon",
+    "text": "This part of the site is still being built. Check back soon, or help us build it on GitHub."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "text": "The page you are looking for does not exist or has moved."
+  }
+}
