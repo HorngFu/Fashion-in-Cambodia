@@ -64,8 +64,12 @@ and respect the open decisions in its section 7 (ask if one blocks the work).
   middleware. Pages live under `src/app/[locale]/`. Every page and layout calls
   `setRequestLocale()` first and gets the locale with `toLocale()`. Use `Link` from `@/i18n/navigation` for internal
   links and `alternatesFor()` for page metadata.
-- A new section replaces its "coming soon" placeholder by adding a real folder,
-  e.g. `src/app/[locale]/shops/page.tsx`; nothing else needs to change.
+- `src/app/[locale]/[section]/page.tsx` serves the text pages listed in
+  `contentPages` and the "coming soon" placeholders in `placeholderSections`
+  (both in `src/lib/site.ts`). A phase that builds Map or Search adds a real
+  folder (e.g. `src/app/[locale]/map/page.tsx`) and removes it from
+  `placeholderSections`. A new text page needs a `content/pages/<slug>/` entry
+  and its slug in `contentPages`.
 - UI building blocks are in `src/components/ui/` (Button, Card, Badge, Tag,
   Breadcrumbs, EmptyState, SmartImage); colors and radii are tokens in
   `src/app/globals.css` (`bg-primary`, `text-muted`, …), never raw hex values.
@@ -75,7 +79,11 @@ and respect the open decisions in its section 7 (ask if one blocks the work).
   [docs/EDITOR_GUIDE.md](docs/EDITOR_GUIDE.md). Shop map positions are one
   `coordinates` text field ("lat, lng"); use `shop.position` from the reader.
 - After changing content or the schema, run `pnpm check:content` (schema,
-  references, map positions) and `pnpm images:check`; both run in CI.
+  references, map positions) and `pnpm images:check`; after adding pages or
+  links, `pnpm build && pnpm check:links`. All three run in CI.
+- Directory UI pieces (PageHeader, ShopCard, ProductCard, CardGrid, ShopBadges,
+  ShopFilters) are in `src/components/directory/`. Text pages render with
+  `<Prose>` (Markdoc). Contact links come from `src/lib/contact.ts`.
 - Shops with `is_sample: true` are example data — show a "sample" badge and
   never present them as real shops.
 - The shop → product relationship is stored **only on the shop** (`products[]`).

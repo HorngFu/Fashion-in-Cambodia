@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { CardGrid } from "@/components/directory/CardGrid";
+import { ShopCard } from "@/components/directory/ShopCard";
 import { SearchBox } from "@/components/layout/SearchBox";
 import { buttonClasses } from "@/components/ui/Button";
 import { Card, cardLinkClasses } from "@/components/ui/Card";
@@ -9,18 +11,15 @@ import { alternatesFor } from "@/i18n/metadata";
 import { Link } from "@/i18n/navigation";
 import { toLocale } from "@/i18n/routing";
 import { cn } from "@/lib/cn";
-import { getTopCategories, localized } from "@/lib/content";
+import {
+  getCategories,
+  getProvinces,
+  getSettings,
+  getShopCountsByProvince,
+  getShops,
+  localized,
+} from "@/lib/content";
 import { links } from "@/lib/site";
-
-// Featured provinces until province pages arrive in Phase 4.
-const featuredProvinces = [
-  "phnom-penh",
-  "siem-reap",
-  "battambang",
-  "kampong-cham",
-  "takeo",
-  "kampot",
-] as const;
 
 export async function generateMetadata({
   params,
@@ -32,11 +31,32 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const locale = toLocale((await params).locale);
   setRequestLocale(locale);
 
-  const [t, tProvinces, categories] = await Promise.all([
-    getTranslations("Home"),
-    getTranslations("Provinces"),
-    getTopCategories(),
-  ]);
+  const [t, tProvinces, settings, categories, shops, provinces, counts] =
+    await Promise.all([
+      getTranslations("Home"),
+      getTranslations("Provinces"),
+      getSettings(),
+      getCategories(),
+      getShops(),
+      getProvinces(),
+      getShopCountsByProvince(),
+    ]);
+
+  // Editors choose these in Site settings; fall back to all top-level ones.
+  const featuredCategories = settings.featured_categories.length
+    ? settings.featured_categories.flatMap((slug) => {
+        const category = categories.find((c) => c.slug === slug);
+        return category ? [category] : [];
+      })
+    : categories.filter((c) => !c.parent);
+  const featuredShops = settings.featured_shops.flatMap((slug) => {
+    const shop = shops.find((s) => s.slug === slug);
+    return shop ? [shop] : [];
+  });
+  // Provinces that have shops, busiest first.
+  const busyProvinces = provinces
+    .filter((p) => counts.has(p.slug))
+    .sort((a, b) => (counts.get(b.slug) ?? 0) - (counts.get(a.slug) ?? 0));
 
   const steps = [
     { title: t("step1Title"), text: t("step1Text") },
@@ -62,12 +82,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           <h2 id="categories-title" className="text-2xl font-semibold">
             {t("categoriesTitle")}
           </h2>
-          {categories.length > 0 ? (
+          {featuredCategories.length > 0 ? (
             <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {categories.map((category) => (
+              {featuredCategories.map((category) => (
                 <li key={category.slug}>
                   <Link
-                    href="/categories"
+                    href={`/categories/${category.slug}`}
                     className={cardLinkClasses("h-full")}
                   >
                     <h3 className="text-lg font-semibold">
@@ -92,6 +112,24 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </div>
           )}
         </section>
+
+        {featuredShops.length > 0 && (
+          <section
+            aria-labelledby="featured-shops"
+            className="flex flex-col gap-5"
+          >
+            <h2 id="featured-shops" className="text-2xl font-semibold">
+              {t("featuredShopsTitle")}
+            </h2>
+            <CardGrid>
+              {featuredShops.map((shop) => (
+                <li key={shop.slug}>
+                  <ShopCard shop={shop} />
+                </li>
+              ))}
+            </CardGrid>
+          </section>
+        )}
 
         <section aria-labelledby="how-title">
           <h2 id="how-title" className="text-2xl font-semibold">
@@ -120,9 +158,16 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             {t("provincesTitle")}
           </h2>
           <ul className="mt-5 flex flex-wrap gap-2">
-            {featuredProvinces.map((province) => (
-              <li key={province}>
-                <TagLink href="/provinces">{tProvinces(province)}</TagLink>
+            {busyProvinces.map((province) => (
+              <li key={province.slug}>
+                <TagLink href={`/provinces/${province.slug}`}>
+                  {localized(locale, province.name_en, province.name_km)}
+                  <span className="text-muted ml-1.5 text-xs">
+                    {tProvinces("shopCount", {
+                      count: counts.get(province.slug) ?? 0,
+                    })}
+                  </span>
+                </TagLink>
               </li>
             ))}
             <li>

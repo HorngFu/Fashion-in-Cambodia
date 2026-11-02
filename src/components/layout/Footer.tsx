@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { footerSections, links, navSections } from "@/lib/site";
+import { contentPages, links, navSections } from "@/lib/site";
 import { LogoMark } from "./Logo";
 
 const linkClass = "inline-block py-1 text-muted hover:text-primary";
@@ -15,7 +15,7 @@ export async function Footer() {
   return (
     <footer className="border-border bg-surface mt-16 border-t">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="sm:col-span-2">
+        <div className="sm:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-2 font-semibold">
             <LogoMark className="size-8" />
             {tMeta("siteName")}
@@ -26,10 +26,23 @@ export async function Footer() {
         <div>
           <h2 className="text-sm font-semibold">{t("explore")}</h2>
           <ul className="mt-2 text-sm">
-            {[...navSections, ...footerSections].map((section) => (
+            {navSections.map((section) => (
               <li key={section}>
                 <Link href={`/${section}`} className={linkClass}>
                   {tNav(section)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-sm font-semibold">{t("about")}</h2>
+          <ul className="mt-2 text-sm">
+            {contentPages.map((page) => (
+              <li key={page}>
+                <Link href={`/${page}`} className={linkClass}>
+                  {tNav(page)}
                 </Link>
               </li>
             ))}

@@ -85,6 +85,45 @@ body {
   line-height: 1.6;
 }
 
+/* Long-form text from content pages (About, FAQ, …). */
+.prose {
+  max-width: 68ch;
+}
+.prose > * + * {
+  margin-top: 1em;
+}
+.prose h2 {
+  margin-top: 2em;
+  font-size: 1.375rem;
+  font-weight: 600;
+}
+.prose h3 {
+  margin-top: 1.5em;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.5em;
+}
+.prose ul {
+  list-style: disc;
+}
+.prose ol {
+  list-style: decimal;
+}
+.prose li + li {
+  margin-top: 0.35em;
+}
+.prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose strong {
+  font-weight: 600;
+}
+
 :focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;

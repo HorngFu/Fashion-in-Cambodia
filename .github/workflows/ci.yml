@@ -50,6 +50,9 @@ jobs:
       - name: Build for Cloudflare
         run: pnpm cf:build
 
+      - name: Links
+        run: pnpm check:links
+
       # The Cloudflare free plan allows a Worker of up to 3 MiB (gzipped).
       # Fail early if we get close, so we notice before a deploy is rejected.
       - name: Check Worker size
