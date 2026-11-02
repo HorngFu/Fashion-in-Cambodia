@@ -49,8 +49,10 @@ Everything here is on the **free plan**. No credit card is needed.
    default `npx wrangler preview`: `wrangler.jsonc` has the `previews` block it
    needs, and `pnpm cf:build` already puts the prerendered pages into the
    assets. Do **not** use `opennextjs-cloudflare upload` here — it fails with a
-   Worker-name error. After changing a build setting, push a new commit to test
-   it; **Retry build** reuses the old settings (see
+   Worker-name error. Previews Base is copied into each branch's own preview
+   on its first build, so later changes only affect new branches; fix an
+   existing branch in its own preview settings. Push a new commit to test a
+   change — **Retry build** reuses the old settings (see
    [ADR 0001](decisions/0001-hosting.md)).
 
 5. Leave **Advanced settings → Build variables** empty for now (the analytics
