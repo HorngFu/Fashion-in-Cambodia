@@ -6,7 +6,8 @@
   "Common": {
     "skipToContent": "Skip to main content",
     "comingSoon": "Coming soon",
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "seeAll": "See all"
   },
   "Header": {
     "homeLabel": "Fashion in Cambodia — home",
@@ -22,7 +23,9 @@
     "map": "Map",
     "search": "Search",
     "about": "About",
-    "contribute": "Contribute"
+    "contribute": "Contribute",
+    "faq": "FAQ",
+    "privacy": "Privacy"
   },
   "Search": {
     "label": "Search products or shops",
@@ -40,6 +43,7 @@
   "Footer": {
     "tagline": "A free, open-source, non-profit directory for fashion lovers in Cambodia.",
     "explore": "Explore",
+    "about": "About",
     "helpOut": "Help out",
     "suggestShop": "Suggest a shop",
     "reportInfo": "Report wrong information",
@@ -52,6 +56,7 @@
     "intro": "Fabrics, clothing, accessories, tools, supplies and services — from markets in Phnom Penh to workshops across all 25 provinces.",
     "categoriesTitle": "Browse by category",
     "categoriesEmpty": "Categories are being added.",
+    "featuredShopsTitle": "Featured shops",
     "howTitle": "How it works",
     "step1Title": "Search",
     "step1Text": "Look for a product, a material or a service.",
@@ -65,13 +70,79 @@
     "contributeText": "This directory is built by the community. Add a shop you know — no account or coding needed.",
     "contributeCta": "Suggest a shop"
   },
+  "Categories": {
+    "title": "Categories",
+    "intro": "Everything for fashion, from fabric to finished clothes and the people who make them.",
+    "subcategories": "Sub-categories",
+    "products": "Products",
+    "productCount": "{count, plural, =0 {No products yet} one {# product} other {# products}}",
+    "noProducts": "No products in this category yet."
+  },
+  "Product": {
+    "category": "Category",
+    "typicalPrice": "Typical price",
+    "whereToBuy": "Where to buy",
+    "shopCount": "{count, plural, =0 {No shops yet} one {Sold at # shop} other {Sold at # shops}}",
+    "noShops": "We don't know a shop that sells this yet.",
+    "noShopsCta": "Know one? Suggest a shop",
+    "onlineShops": "Online",
+    "moreInCategory": "More in {category}",
+    "photos": "Photos"
+  },
+  "Shops": {
+    "title": "Shops",
+    "intro": "Shops, market stalls, workshops and online sellers across Cambodia.",
+    "filterProvince": "Province",
+    "filterType": "Type",
+    "allProvinces": "All provinces",
+    "allTypes": "All types",
+    "showing": "{count, plural, =0 {No shops found} one {# shop} other {# shops}}",
+    "noResults": "No shops match these filters.",
+    "clearFilters": "Clear filters"
+  },
+  "ShopType": {
+    "physical": "Shop",
+    "market_stall": "Market stall",
+    "workshop": "Workshop / tailor",
+    "online_only": "Online only"
+  },
+  "Badge": {
+    "verified": "Verified",
+    "sample": "Sample",
+    "madeInCambodia": "Made in Cambodia",
+    "temporarilyClosed": "Temporarily closed"
+  },
+  "Shop": {
+    "sells": "What they sell",
+    "contact": "Contact",
+    "call": "Call {phone}",
+    "telegram": "Telegram",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "website": "Website",
+    "location": "Location",
+    "market": "Market",
+    "district": "District",
+    "openingHours": "Opening hours",
+    "directions": "Directions in Google Maps",
+    "onlineOnly": "This seller is online only — contact them to order.",
+    "lastVerified": "Information checked on {date}.",
+    "notVerified": "This information has not been checked yet.",
+    "sampleNotice": "This is a sample entry used while the site is being built. It is not a real shop.",
+    "temporarilyClosed": "This shop is temporarily closed.",
+    "report": "Report wrong information",
+    "photos": "Photos"
+  },
   "Provinces": {
-    "phnom-penh": "Phnom Penh",
-    "siem-reap": "Siem Reap",
-    "battambang": "Battambang",
-    "kampong-cham": "Kampong Cham",
-    "takeo": "Takeo",
-    "kampot": "Kampot"
+    "title": "Provinces",
+    "intro": "Find fashion shops in every province of Cambodia.",
+    "capital": "Capital: {name}",
+    "shopCount": "{count, plural, =0 {No shops yet} one {# shop} other {# shops}}",
+    "shops": "Shops in {province}",
+    "noShops": "No shops in {province} yet.",
+    "noShopsCta": "Know one? Suggest a shop",
+    "popularProducts": "Popular products"
   },
   "ComingSoon": {
     "title": "{section} — coming soon",

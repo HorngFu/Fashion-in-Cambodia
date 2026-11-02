@@ -219,10 +219,10 @@ Starter tree (editable):
 `name_km`, `name_en`, `slug`, `capital_en/km`, `center_lat`, `center_lng`, `zoom`.
 Seeded with all 25 provinces of Cambodia.
 
-### Page (MDX)
+### Page (Markdoc)
 
-About us, Contribute, Privacy, Terms, FAQ. `title_en/km`, `summary_en/km`,
-`body_en` and `body_km` (MDX, stored as separate files).
+About us, Contribute, Privacy, FAQ. `title_en/km`, `summary_en/km`,
+`body_en` and `body_km` (Markdoc/Markdown, stored as separate `.md` files).
 
 ### Site settings (singleton)
 
@@ -418,18 +418,22 @@ Cost: $0.
 
 Pages (all statically generated, both languages)
 
-- [ ] 4.1 **Home** — search bar, featured categories, featured shops, browse by province.
-- [ ] 4.2 **Categories index** and **Category page** — sub-categories + products.
-- [ ] 4.3 **Product page** — description, photos, **"Where to buy"** list of shops (grouped by province).
-- [ ] 4.4 **Shops index** — list with basic filters by province and type.
-- [ ] 4.5 **Shop page** — photos, contact buttons (Call, Telegram, Facebook), opening hours, address, products carried, "Open in Google Maps", "Report wrong info" link, last verified date.
-- [ ] 4.6 **Province page** — shops and popular products in that province.
-- [ ] 4.7 **Static pages** — About, Contribute, Privacy, FAQ (from MDX).
-- [ ] 4.8 404 page, loading states, breadcrumbs.
+- [x] 4.1 **Home** — search bar, featured categories, featured shops, browse by province.
+- [x] 4.2 **Categories index** and **Category page** — sub-categories + products.
+- [x] 4.3 **Product page** — description, photos, **"Where to buy"** list of shops (grouped by province).
+- [x] 4.4 **Shops index** — list with basic filters by province and type.
+- [x] 4.5 **Shop page** — photos, contact buttons (Call, Telegram, Facebook), opening hours, address, products carried, "Open in Google Maps", "Report wrong info" link, last verified date.
+- [x] 4.6 **Province page** — shops and popular products in that province.
+- [x] 4.7 **Static pages** — About, Contribute, Privacy, FAQ (Markdoc, rendered at build).
+- [x] 4.8 404 page, loading states, breadcrumbs.
 
 Done when: every seed item has a working page; no broken links (checked by a
 link-check script); all pages are pre-rendered (no per-request server rendering).
 Cost: $0.
+
+> Result: 211 prerendered pages; `pnpm check:links` (in CI) finds no broken
+> links across 206 reachable pages. Lighthouse accessibility 100 on every page
+> type. Price notes and opening hours are English-only fields for now.
 
 ---
 
@@ -569,8 +573,8 @@ Do these only when the trigger appears. Each is its own phase.
 | 0 Foundations              | ✅ Done        | `phase-0-foundations`   | [#1](https://github.com/HorngFu/Fashion-in-Cambodia/pull/1)                                                     |
 | 1 Scaffold + deploy spike  | ✅ Done        | `phase-1-scaffold`      | [#2](https://github.com/HorngFu/Fashion-in-Cambodia/pull/2); live, auto-deploys from `main`; analytics deferred |
 | 2 Design system & layout   | ✅ Done        | `phase-2-design-system` | [#3](https://github.com/HorngFu/Fashion-in-Cambodia/pull/3); Khmer copy needs native review                     |
-| 3 Content model            | 🟨 In review   | `phase-3-content-model` | Khmer names in seed data need native review                                                                     |
-| 4 Core public pages        | ⬜ Not started |                         |                                                                                                                 |
+| 3 Content model            | ✅ Done        | `phase-3-content-model` | [#4](https://github.com/HorngFu/Fashion-in-Cambodia/pull/4); Khmer seed names need native review                |
+| 4 Core public pages        | 🟨 In review   | `phase-4-public-pages`  | Khmer copy needs native review                                                                                  |
 | 5 Search & filters         | ⬜ Not started |                         |                                                                                                                 |
 | 6 Maps                     | ⬜ Not started |                         |                                                                                                                 |
 | 7 Production CMS           | ⬜ Not started |                         |                                                                                                                 |

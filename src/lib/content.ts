@@ -121,6 +121,25 @@ export async function getShopsByProvince(provinceSlug: string) {
   );
 }
 
+// How many shops sell each product, by product slug.
+export const getShopCountsByProduct = once(async () => {
+  const counts = new Map<string, number>();
+  for (const shop of await getShops())
+    for (const { product } of shop.products)
+      if (product) counts.set(product, (counts.get(product) ?? 0) + 1);
+  return counts;
+});
+
+// How many shops are in each province, by province slug.
+export const getShopCountsByProvince = once(async () => {
+  const counts = new Map<string, number>();
+  for (const shop of await getShops()) {
+    const province = shop.location.province;
+    if (province) counts.set(province, (counts.get(province) ?? 0) + 1);
+  }
+  return counts;
+});
+
 // Products a shop sells, resolved to full product entries.
 export async function getProductsForShop(shop: Shop) {
   const products = await getProducts();

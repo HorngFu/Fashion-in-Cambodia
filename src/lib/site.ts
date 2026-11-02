@@ -1,10 +1,17 @@
-// Site sections shown in navigation. Pages that are not built yet render a
-// "coming soon" placeholder from src/app/[locale]/[section]/page.tsx.
+// Site sections shown in navigation.
 export const navSections = ["categories", "shops", "provinces", "map"] as const;
-export const footerSections = ["about", "contribute"] as const;
-export const sections = [...navSections, ...footerSections, "search"] as const;
 
-export type Section = (typeof sections)[number];
+// Text pages from content/pages, linked in the footer.
+export const contentPages = ["about", "contribute", "faq", "privacy"] as const;
+
+// Sections that are not built yet. They render a "coming soon" placeholder
+// from src/app/[locale]/[section]/page.tsx until their phase replaces them.
+export const placeholderSections = ["map", "search"] as const;
+
+export type Section =
+  | (typeof navSections)[number]
+  | (typeof contentPages)[number]
+  | (typeof placeholderSections)[number];
 
 // Public URL of the live site, used for absolute links in metadata.
 // Set NEXT_PUBLIC_SITE_URL once a custom domain is connected (Phase 10).

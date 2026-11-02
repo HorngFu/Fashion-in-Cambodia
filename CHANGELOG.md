@@ -7,6 +7,29 @@ Entries are grouped by development phase (see
 
 ## [Unreleased]
 
+### Phase 4 — Core public pages
+
+#### Added
+
+- Category index and category pages (sub-categories and products).
+- Product pages with **Where to buy**: shops grouped by province, online
+  sellers last, with each shop's price note.
+- Shops index with province and type filters (in the browser, kept in the URL).
+- Shop pages: what they sell, call / Telegram / social buttons, location with
+  Google Maps directions, opening hours, last-checked date and a pre-filled
+  "Report wrong information" link. Sample shops show a notice and are `noindex`.
+- Province index (shop counts) and province pages (shops, popular products).
+- Text pages About, Contribute, FAQ and Privacy from `content/pages`,
+  rendered from Markdoc at build time.
+- Home page: featured categories and shops from Site settings, provinces with
+  shops, all linked to their pages. Footer "About" column.
+- `pnpm check:links` crawls the built site for broken internal links (in CI).
+
+#### Changed
+
+- Page bodies use Keystatic's Markdoc field (`.md` files) instead of MDX, so
+  they can be rendered with the Markdoc library Keystatic already includes.
+
 ### Phase 3 — Content model in Keystatic
 
 #### Added
