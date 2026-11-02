@@ -45,11 +45,13 @@ Everything here is on the **free plan**. No credit card is needed.
    | Preview command \* | `npx wrangler preview` (Cloudflare's default — leave it)      |
    | Root directory     | `/` (leave empty)                                             |
 
-   \* The Preview command is in **Settings → Builds → Previews Base**. Pull
-   request builds run `npx wrangler preview` even when this field is changed
-   (seen 2026-11-01), so the project is set up for it instead: `wrangler.jsonc`
-   has the required `previews` block, and `pnpm cf:build` already puts the
-   prerendered pages into the assets (see [ADR 0001](decisions/0001-hosting.md)).
+   \* The Preview command is in **Settings → Builds → Previews Base**. Keep the
+   default `npx wrangler preview`: `wrangler.jsonc` has the `previews` block it
+   needs, and `pnpm cf:build` already puts the prerendered pages into the
+   assets. Do **not** use `opennextjs-cloudflare upload` here — it fails with a
+   Worker-name error. After changing a build setting, push a new commit to test
+   it; **Retry build** reuses the old settings (see
+   [ADR 0001](decisions/0001-hosting.md)).
 
 5. Leave **Advanced settings → Build variables** empty for now (the analytics
    token is added in step 4). Node.js 24 is picked up from `.node-version` and
