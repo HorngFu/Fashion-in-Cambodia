@@ -1,6 +1,6 @@
 # 0002 — Khmer/English routing without middleware
 
-- **Status:** Accepted
+- **Status:** Accepted — decisions 3–4 updated by [ADR 0003](0003-classic-static-rendering.md)
 - **Date:** 2026-11-02
 - **Phase:** 2
 
@@ -21,15 +21,14 @@ prerendered are rendered on request instead of being rejected up front.
    `next.config.ts`. No language detection from the browser for now.
 3. **Static rendering with next-intl:** every layout and page calls
    `setRequestLocale(locale)` before using translations, so next-intl never
-   reads request headers. The `[locale]` layout keeps
-   `ensureStatic = "navigation"`, which fails the build if this is missed.
-4. **Unknown URLs:**
-   - Pages call `toLocale()`, which calls `notFound()` for unknown languages.
-   - The layout uses `resolveLocale()`, which falls back to Khmer, so
-     `[locale]/not-found.tsx` can show a translated 404 inside the normal
-     layout (e.g. `/xx`, `/km/unknown`).
-   - `global-not-found.tsx` (bilingual) covers URLs that match no route at all
-     (e.g. `/a/b/c`).
+   reads request headers. The `[locale]` layout sets `dynamic = "error"`,
+   which fails the build if this is missed.
+4. **Unknown URLs:** every dynamic route sets `dynamicParams = false`, so
+   `/xx`, `/km/unknown` and `/a/b/c` all get the prebuilt bilingual
+   `global-not-found.tsx` without any rendering. `toLocale()` turns the
+   `[locale]` segment into a typed locale. (The first version rendered a
+   translated 404 on request; that failed on Workers — see
+   [ADR 0003](0003-classic-static-rendering.md).)
 5. **Placeholder sections:** `[locale]/[section]/page.tsx` renders "coming
    soon" for nav targets that are not built yet. A real folder such as
    `[locale]/shops/` takes priority, so phases replace it one section at a time.
@@ -44,9 +43,9 @@ prerendered are rendered on request instead of being rejected up front.
 ## Consequences
 
 - Visitors who land on `/` always get Khmer first; the switcher is in the header.
-- Requests for unknown languages or sections render a 404 on request. This is
-  cheap (no content is read), but it is request-time rendering, so it must be
-  checked on Workers whenever routing changes.
+- Requests for unknown languages or sections get the prebuilt 404 page; no
+  code renders on request. New dynamic routes must also set
+  `dynamicParams = false`.
 - Adding a language means adding it to `routing.locales` and a new
   `messages/<locale>.json`.
 

@@ -23,7 +23,8 @@ and respect the open decisions in its section 7 (ask if one blocks the work).
 
 ## Stack
 
-- Next.js 16 (App Router, Cache Components, Partial Prefetching), TypeScript
+- Next.js 16 (App Router, **Cache Components off** — see
+  [ADR 0003](docs/decisions/0003-classic-static-rendering.md)), TypeScript
   (strict) and Tailwind CSS 4, managed with **pnpm**. This Next.js is newer than
   most training data — read the bundled docs in `node_modules/next/dist/docs/`
   (see `AGENTS.md`).
@@ -37,11 +38,12 @@ and respect the open decisions in its section 7 (ask if one blocks the work).
 - **Static-first:** every public page is pre-rendered at build time
   (`generateStaticParams`). Do not add per-request server rendering, middleware
   that runs on every page, or server-side data fetching for public pages
-  without asking. Rendering Cache Components pages at request time **hangs on
-  Workers** — see [ADR 0001](docs/decisions/0001-hosting.md).
-- The `(site)` root layout exports `ensureStatic = "navigation"`; keep it. Read
-  content only through `src/lib/content.ts`, whose functions use `"use cache"` +
-  `cacheLife("content")`.
+  without asking. Do not turn Cache Components back on: rendering with it at
+  request time **fails on Workers** (ADR 0001, ADR 0003).
+- The `[locale]` layout exports `dynamic = "error"`; keep it. **Every dynamic
+  route sets `dynamicParams = false`** so unknown URLs get the prebuilt 404
+  instead of being rendered on request. Read content only through
+  `src/lib/content.ts` (build time only).
 - Build for Cloudflare only with `pnpm cf:build`: it also copies the prerender
   cache into `.open-next/assets`. Without that step the Worker hangs on pages.
   Keep the `previews` block in `wrangler.jsonc` (PR builds run `wrangler preview`).
@@ -60,8 +62,7 @@ and respect the open decisions in its section 7 (ask if one blocks the work).
   speaker.
 - **Language routing** ([ADR 0002](docs/decisions/0002-i18n-routing.md)): no
   middleware. Pages live under `src/app/[locale]/`. Every page and layout calls
-  `setRequestLocale()` first; pages get the locale with `toLocale()`, layouts
-  with `resolveLocale()`. Use `Link` from `@/i18n/navigation` for internal
+  `setRequestLocale()` first and gets the locale with `toLocale()`. Use `Link` from `@/i18n/navigation` for internal
   links and `alternatesFor()` for page metadata.
 - A new section replaces its "coming soon" placeholder by adding a real folder,
   e.g. `src/app/[locale]/shops/page.tsx`; nothing else needs to change.

@@ -11,6 +11,9 @@ import { type Section, sections } from "@/lib/site";
 
 // Placeholder for sections that are not built yet. Real pages added later
 // (e.g. src/app/[locale]/shops/page.tsx) take priority over this route.
+// Unknown sections get the prebuilt 404 page without any server rendering.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
     sections.map((section) => ({ locale, section })),

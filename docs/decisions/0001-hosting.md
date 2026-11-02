@@ -1,6 +1,6 @@
 # 0001 — Hosting on Cloudflare Workers (free plan), static-first
 
-- **Status:** Accepted
+- **Status:** Accepted — decision 2 updated by [ADR 0003](0003-classic-static-rendering.md)
 - **Date:** 2026-11-01
 - **Phase:** 1
 
@@ -48,11 +48,13 @@ page, the Keystatic admin and its API route.
 1. **Host on Cloudflare Workers via `@opennextjs/cloudflare`, free plan.** The
    bundle is well under the size limit, with room for the full Keystatic admin.
 2. **Static-first is mandatory, not just preferred.**
-   - The public site's root layout exports `ensureStatic = "navigation"`, so
-     `next build` fails if any public page would need rendering per request.
-   - Content is read through `"use cache"` functions with the `content`
-     `cacheLife` profile (1-year revalidate). Content only changes by
-     redeploying, which happens on every push to `main`.
+   - _Updated by [ADR 0003](0003-classic-static-rendering.md):_ Cache
+     Components is off. The `[locale]` layout exports `dynamic = "error"`
+     (build fails if a public page needs request-time rendering) and every
+     dynamic route sets `dynamicParams = false` (unknown URLs get the
+     prebuilt 404).
+   - Content is read only at build time. It changes by redeploying, which
+     happens on every push to `main`.
 3. **Incremental cache: `staticAssetsIncrementalCache`.** Prerendered pages are
    stored as Workers static assets. No R2 bucket or KV namespace is needed, so
    no payment method is needed either.

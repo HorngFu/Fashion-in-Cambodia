@@ -20,8 +20,17 @@ Entries are grouped by development phase (see
 - Header (logo, navigation, search box, language switcher), mobile menu and footer.
 - UI components: Button, Card, Badge, Tag, Breadcrumbs, EmptyState, SmartImage.
 - Placeholder home page and "coming soon" pages for sections not built yet.
-- Translated 404 page inside the site layout, plus a bilingual global 404.
+- Bilingual 404 page, served prebuilt for any unknown URL.
 - Canonical and language-alternate links on every page (`NEXT_PUBLIC_SITE_URL`).
+
+#### Changed
+
+- Turned off Next.js Cache Components and Partial Prefetching: pages rendered
+  on request with them failed on Cloudflare Workers (error 1101). Pages are
+  plain static pages with `dynamic = "error"` and `dynamicParams = false`
+  (ADR 0003).
+- Cloudflare preview builds keep the default `npx wrangler preview` command;
+  documented that each branch's preview keeps its own copy of the settings.
 
 ### Phase 1 — Scaffold + Cloudflare deploy spike
 

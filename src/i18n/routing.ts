@@ -12,14 +12,9 @@ export const routing = defineRouting({
 
 export type Locale = (typeof routing.locales)[number];
 
-// Pages: turns the [locale] URL segment into a Locale, or shows the 404 page.
+// Turns the [locale] URL segment into a typed Locale. Unknown values never
+// reach a page (dynamicParams = false), but this keeps the types honest.
 export function toLocale(value: string): Locale {
   if (!hasLocale(routing.locales, value)) notFound();
   return value;
-}
-
-// Layouts: falls back to the default locale for unknown values, so the page
-// below can render the translated 404 inside the normal site layout.
-export function resolveLocale(value: string): Locale {
-  return hasLocale(routing.locales, value) ? value : routing.defaultLocale;
 }

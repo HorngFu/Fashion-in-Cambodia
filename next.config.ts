@@ -2,20 +2,10 @@ import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
-const ONE_YEAR = 60 * 60 * 24 * 365;
-
+// Cache Components is deliberately off: rendering with it at request time
+// hangs on Cloudflare Workers, and it does not allow `dynamicParams = false`.
+// Pages are plain static pages instead (docs/decisions/0003-classic-static-rendering.md).
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
-  cacheLife: {
-    // Content from /content only changes when the site is rebuilt and
-    // redeployed, so cached content never needs to revalidate on the server.
-    content: {
-      stale: 60 * 5,
-      revalidate: ONE_YEAR,
-      expire: ONE_YEAR,
-    },
-  },
   experimental: {
     // The root layout lives under [locale], so unmatched URLs need a 404 page
     // that does not depend on it (src/app/global-not-found.tsx).

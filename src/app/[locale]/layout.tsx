@@ -4,17 +4,19 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CloudflareAnalytics } from "@/components/CloudflareAnalytics";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { resolveLocale, routing } from "@/i18n/routing";
+import { routing, toLocale } from "@/i18n/routing";
 import { siteUrl } from "@/lib/site";
 import { kantumruy } from "../fonts";
 import "../globals.css";
 
 // Fail the build if any public page would need rendering on every request.
 // Static pages are what keep hosting on the Cloudflare free plan.
-export const ensureStatic = "navigation";
+export const dynamic = "error";
 
-// Only /km and /en are prerendered. For any other value the layout renders in
-// Khmer and the page calls notFound() (see [locale]/not-found.tsx).
+// Only /km and /en exist. Any other first segment gets the prebuilt 404 page
+// without rendering anything on the server.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -22,7 +24,7 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: LayoutProps<"/[locale]">): Promise<Metadata> {
-  const locale = resolveLocale((await params).locale);
+  const locale = toLocale((await params).locale);
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
@@ -36,7 +38,7 @@ export default async function LocaleLayout({
   children,
   params,
 }: LayoutProps<"/[locale]">) {
-  const locale = resolveLocale((await params).locale);
+  const locale = toLocale((await params).locale);
   setRequestLocale(locale);
 
   const t = await getTranslations("Common");
